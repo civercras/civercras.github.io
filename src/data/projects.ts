@@ -80,6 +80,14 @@ export const projects: Project[] = [
         ),
       },
       {
+        t: 'embed',
+        src: 'https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent('https://www.figma.com/proto/6gqHxyPgSo9AZkkAlwnGyI/PabloGrasa-Prototipo-Proyecto-App-N%C3%B3madas-Digitales?node-id=0-1&scaling=scale-down&content-scaling=fixed'),
+        title: b('Prototipo interactivo de BaseHub', 'BaseHub interactive prototype'),
+        heading: b('Pruébala aquí mismo', 'Try it right here'),
+        caption: b('Prototipo navegable en Figma: toca los botones como en el móvil.', 'Clickable Figma prototype: tap through it like on a phone.'),
+        ratio: '16 / 11',
+      },
+      {
         t: 'stats',
         title: b('Investigación', 'Research'),
         items: [
@@ -205,6 +213,13 @@ export const projects: Project[] = [
           'Cocoon es una plataforma web que necesitaba una evaluación integral de accesibilidad. Hice una auditoría express que identificó las barreras y propuso soluciones prácticas para que la web pueda usarla cualquier persona, sean cuales sean sus capacidades.',
           'Cocoon is a web platform that needed a full accessibility review. I ran an express audit that identified the barriers and proposed practical fixes so anyone can use the site, whatever their abilities.'
         ),
+      },
+      {
+        t: 'embed',
+        src: 'https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent('https://www.figma.com/deck/06SriGJswkvbL1aFTmJtlY/AuditoriaGrupoOnline?node-id=1-32'),
+        title: b('Presentación de la auditoría de accesibilidad', 'Accessibility audit presentation'),
+        heading: b('La auditoría completa', 'The full audit'),
+        caption: b('Todos los hallazgos, con capturas, criterios WCAG y propuestas de mejora. Usa las flechas para avanzar.', 'Every finding, with screenshots, WCAG criteria and proposed fixes. Use the arrows to move through it.'),
       },
       {
         t: 'cards',
@@ -419,9 +434,8 @@ export const projects: Project[] = [
     type: b('App Android', 'Android app'),
     tools: ['Figma', 'React Native', 'Expo', 'TypeScript'],
     tags: [b('Gestos', 'Gestures'), b('Háptica', 'Haptics'), b('Privacidad', 'Privacy')],
-    cover: img('bookreader-poster.jpg'),
-    loop: media('bookreader-promo.mp4'),
-    icon: img('bookreader-poster.jpg'),
+    cover: img('bookreader-cover.webp'),
+    icon: img('bookreader-reader.webp'),
     accent: '#d6303a',
     links: [{ label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/BookReader-app', kind: 'github' }],
     blocks: [
@@ -432,7 +446,28 @@ export const projects: Project[] = [
           'An experimental open-source Android app to read EPUBs with the ORP (Optimal Recognition Point) technique: it highlights each word’s central letter in red so your eyes stay fixed and you read faster without side-to-side movement.'
         ),
       },
-      { t: 'video', src: media('bookreader-promo.mp4'), poster: img('bookreader-poster.jpg'), vertical: true, caption: b('Vídeo promocional', 'Promo video') },
+      {
+        t: 'cards',
+        title: b('El reto', 'The challenge'),
+        items: [
+          { icon: '⏱️', title: b('Leer más rápido en el móvil', 'Read faster on a phone'), text: b('La pantalla pequeña obliga a mover mucho los ojos y a hacer scroll constante, lo que cansa y frena la lectura.', 'A small screen means lots of eye movement and constant scrolling, which is tiring and slows reading down.') },
+          { icon: '🧠', title: b('Sin perder comprensión', 'Without losing comprehension'), text: b('La lectura rápida suele hacer que pierdas el hilo. Había que ofrecer una forma fácil de volver al texto completo.', 'Speed reading often makes you lose the thread. There had to be an easy way back to the full text.') },
+          { icon: '👆', title: b('Control con una mano', 'One-handed control'), text: b('Pausar, retroceder o ajustar la velocidad sin buscar botones pequeños: gestos sobre toda la pantalla.', 'Pause, rewind or change speed without hunting for small buttons: gestures across the whole screen.') },
+        ],
+      },
+      {
+        t: 'gallery',
+        title: b('Pantallas', 'Screens'),
+        layout: 'phones',
+        items: [
+          { src: img('bookreader-library.webp'), title: b('Biblioteca', 'Library') },
+          { src: img('bookreader-reader.webp'), title: b('Lectura ORP', 'ORP reading') },
+          { src: img('bookreader-speed.webp'), title: b('Aceleración progresiva', 'Progressive speed') },
+          { src: img('bookreader-context.webp'), title: b('Modo contexto', 'Context mode') },
+          { src: img('bookreader-settings.webp'), title: b('Ajustes y tema oscuro', 'Settings & dark theme') },
+        ],
+      },
+      { t: 'video', src: media('bookreader-promo.mp4'), poster: img('bookreader-library.webp'), vertical: true, caption: b('Vídeo promocional', 'Promo video') },
       {
         t: 'cards',
         title: b('Funcionalidades', 'Features'),
