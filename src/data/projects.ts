@@ -281,7 +281,6 @@ export const projects: Project[] = [
         heading: b('Investigación y proceso', 'Research & process'),
         caption: b('Toda la investigación con jugadores, el análisis y la evolución del diseño. Usa las flechas para avanzar.', 'All the player research, analysis and design evolution. Use the arrows to move through it.'),
       },
-      { t: 'image', src: img('riftos-screens.webp'), alt: b('Pantallas de RiftOS', 'RiftOS screens'), fit: 'cover' },
       {
         t: 'cards',
         title: b('Funcionalidades', 'Features'),
