@@ -35,7 +35,7 @@ export function Gadgets({ open }: { open: Open }) {
 
       <div className="gadget gadget--now">
         <h3>{tx(ui.now)}</h3>
-        <div className="now__item"><span>🛠️</span><div>{es ? <><b>Mando PC</b> ya va por la v1.1.1 y ahora también habla inglés. </> : <><b>Mando PC</b> is now on v1.1.1 and speaks English too. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'mandopc' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
+        <div className="now__item"><span>🛠️</span><div>{es ? <>Mando PC ahora se llama <b>Couchpad</b> y estrena la v1.2. </> : <>Mando PC is now <b>Couchpad</b>, and v1.2 is out. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'couchpad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
         <div className="now__item"><span>✨</span><div>{es ? <>Estrenando <b>nuevo look</b> del portfolio. ¿Qué te parece? </> : <>Showing off the portfolio’s <b>new look</b>. What do you think? </>}<button className="now__link" onClick={() => open({ kind: 'contact' })}>{es ? 'Cuéntamelo' : 'Tell me'}</button></div></div>
         <div className="now__item"><span>🖨️</span><div>{es ? <>Diseñando modelos para <b>impresión 3D</b>.</> : <>Designing models for <b>3D printing</b>.</>}</div></div>
       </div>

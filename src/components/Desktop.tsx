@@ -32,7 +32,7 @@ const uxIcon = folderSvg('#9fe6ff', '#1ea3ef', '#0a5fc0', '<rect x="22" y="30" w
 const otherIcon = folderSvg('#d8ff9c', '#46c93a', '#16802a', '<circle cx="27" cy="38" r="5" fill="#fff"/><rect x="34" y="33" width="9" height="10" rx="1.5" fill="#fff"/>');
 
 export const folders = {
-  uxui: { title: { es: 'Diseño UX/UI', en: 'UX/UI design' }, icon: uxIcon, ids: ['basehub', 'cocoon', 'riftos', 'mandopc', 'bookreader', 'instalaza'] },
+  uxui: { title: { es: 'Diseño UX/UI', en: 'UX/UI design' }, icon: uxIcon, ids: ['basehub', 'cocoon', 'riftos', 'couchpad', 'bookreader', 'instalaza'] },
   otros: { title: { es: 'Otros proyectos', en: 'Other projects' }, icon: otherIcon, ids: ['rumex', 'carteles', 'fotografia', 'tfg'] },
 } as const;
 

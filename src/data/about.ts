@@ -11,7 +11,7 @@ export const contact = {
 export const strengths = [
   { icon: '🧭', title: b('Diseño centrado en el usuario', 'User-centred design'), text: b('Entrevistas, encuestas, card sorting y testing con usuarios reales. Decido con datos, no con intuiciones.', 'Interviews, surveys, card sorting and testing with real users. I decide with data, not hunches.') },
   { icon: '📐', title: b('Mentalidad de ingeniero', 'Engineering mindset'), text: b('Años de planos, tolerancias y CAD: precisión, sistemas y atención al detalle.', 'Years of drawings, tolerances and CAD: precision, systems thinking and attention to detail.') },
-  { icon: '🚀', title: b('Del prototipo al producto', 'From prototype to product'), text: b('No me quedo en Figma: he publicado apps reales como Mando PC y BookReader.', 'I don’t stop at Figma: I’ve shipped real apps like Mando PC and BookReader.') },
+  { icon: '🚀', title: b('Del prototipo al producto', 'From prototype to product'), text: b('No me quedo en Figma: he publicado apps reales como Couchpad y BookReader.', 'I don’t stop at Figma: I’ve shipped real apps like Couchpad and BookReader.') },
 ];
 
 export const experience = [

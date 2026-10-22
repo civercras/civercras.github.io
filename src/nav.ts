@@ -25,6 +25,7 @@ export function hashToTarget(hash: string): Target | null {
   if (h === 'sobre-mi' || h === 'about') return { kind: 'about' };
   if (h === 'contacto' || h === 'contact') return { kind: 'contact' };
   if (h === 'tfm') return { kind: 'project', id: 'tfg' };
+  if (h === 'mandopc') return { kind: 'project', id: 'couchpad' };
   if (byId(h)) return { kind: 'project', id: h };
   return null;
 }

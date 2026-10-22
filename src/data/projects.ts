@@ -321,15 +321,15 @@ export const projects: Project[] = [
 
   /* ───────────────────────── MANDO PC ───────────────────────── */
   {
-    id: 'mandopc',
-    title: 'Mando PC',
+    id: 'couchpad',
+    title: 'Couchpad',
     featured: true,
     category: b('App real · Open source', 'Real app · Open source'),
     short: b(
       'Tu móvil como mando a distancia del PC desde el sofá. Diseñada pensando en el pulgar.',
       'Your phone as a couch remote for your PC. Designed around the thumb.'
     ),
-    badge: b('v1.1.1', 'v1.1.1'),
+    badge: b('v1.2', 'v1.2'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App Windows + web móvil', 'Windows app + mobile web'),
@@ -348,8 +348,8 @@ export const projects: Project[] = [
         t: 'lead',
         title: b('La idea', 'The idea'),
         text: b(
-          'Controlar el PC desde el sofá o la cama sin levantarse: ratón, teclado, ventanas, volumen y apagado. Escaneas un QR y el móvil se convierte en un mando, por Wi-Fi local, sin cuentas ni servidores externos.',
-          'Control your PC from the couch or bed without getting up: mouse, keyboard, windows, volume and power. Scan a QR code and your phone becomes a remote — over local Wi-Fi, no accounts, no external servers.'
+          'Couchpad (antes Mando PC) nace de una idea sencilla: controlar el PC desde el sofá o la cama sin levantarse: ratón, teclado, ventanas, volumen y apagado. Escaneas un QR y el móvil se convierte en un mando, por Wi-Fi local, sin cuentas ni servidores externos.',
+          'Couchpad (formerly Mando PC) comes from a simple idea: control your PC from the couch or bed without getting up: mouse, keyboard, windows, volume and power. Scan a QR code and your phone becomes a remote — over local Wi-Fi, no accounts, no external servers.'
         ),
       },
       { t: 'video', src: media('mandopc-showcase.mp4'), poster: img('mandopc-poster.jpg'), caption: b('Demo de la app', 'App demo') },
