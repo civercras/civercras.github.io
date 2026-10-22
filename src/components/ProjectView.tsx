@@ -140,7 +140,8 @@ function BlockView({ blk, p, onZoom }: { blk: Block; p: Project; onZoom: (lb: LB
       );
     case 'embed':
       return (
-        <section className="blk">
+        <section className="blk"><H t={blk.heading} />
+          {blk.caption && <p className="txt" style={{ marginBottom: 14 }}>{tx(blk.caption)}</p>}
           <div className="embed" style={{ aspectRatio: blk.ratio ?? '16 / 9' }}>
             <iframe src={blk.src} title={tx(blk.title)} loading="lazy" allowFullScreen />
           </div>

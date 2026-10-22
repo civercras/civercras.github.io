@@ -16,7 +16,7 @@ export type Block =
   | { t: 'image'; src: string; alt: T; caption?: T; fit?: 'cover' | 'contain'; bg?: string }
   | { t: 'gallery'; title?: T; layout: 'phones' | 'masonry' | 'grid'; items: { src: string; title?: T; text?: T }[] }
   | { t: 'video'; src: string; poster?: string; caption?: T; vertical?: boolean }
-  | { t: 'embed'; src: string; title: T; ratio?: string }
+  | { t: 'embed'; src: string; title: T; ratio?: string; heading?: T; caption?: T }
   | { t: 'note'; text: T; tone?: 'info' | 'lock' }
   | { t: 'cta'; title: T; text?: T };
 
@@ -253,6 +253,7 @@ export const projects: Project[] = [
     accent: '#c8aa6e',
     links: [
       { label: b('Iniciar el prototipo', 'Launch the prototype'), href: 'https://www.figma.com/proto/N1u7VubX98d6tU61YZSASk/PabloGrasa-Prototipo-Proyecto-Final?node-id=3-7&t=BXvFuq46LlK6ltwz-1', kind: 'figma' },
+      { label: b('Ver la investigación completa', 'See the full research'), href: 'https://www.figma.com/deck/zpqseEQknou04pFan3Z8u7', kind: 'figma' },
     ],
     blocks: [
       {
@@ -272,6 +273,13 @@ export const projects: Project[] = [
           { v: '92%', l: b('Satisfacción con el diseño', 'Design satisfaction') },
           { v: '94%', l: b('Éxito en tareas clave', 'Key task success') },
         ],
+      },
+      {
+        t: 'embed',
+        src: 'https://www.figma.com/embed?embed_host=share&url=' + encodeURIComponent('https://www.figma.com/deck/zpqseEQknou04pFan3Z8u7'),
+        title: b('Presentación: investigación y proceso de RiftOS', 'Presentation: RiftOS research and process'),
+        heading: b('Investigación y proceso', 'Research & process'),
+        caption: b('Toda la investigación con jugadores, el análisis y la evolución del diseño. Usa las flechas para avanzar.', 'All the player research, analysis and design evolution. Use the arrows to move through it.'),
       },
       { t: 'image', src: img('riftos-screens.webp'), alt: b('Pantallas de RiftOS', 'RiftOS screens'), fit: 'cover' },
       {
@@ -308,7 +316,7 @@ export const projects: Project[] = [
           b('Biblioteca de iconos propia del universo LoL', 'Custom icon library for the LoL universe'),
         ],
       },
-      { t: 'cta', title: b('Inicia el sistema', 'Boot the system'), text: b('Prototipo de alta fidelidad navegable en Figma.', 'Clickable high-fidelity prototype in Figma.') },
+      { t: 'cta', title: b('Inicia el sistema', 'Boot the system'), text: b('Prototipo de alta fidelidad navegable y la presentación con toda la investigación, en Figma.', 'The clickable high-fidelity prototype and the deck with all the research, on Figma.') },
     ],
   },
 
