@@ -4,11 +4,12 @@ export type Target =
   | { kind: 'showcase' }
   | { kind: 'about' }
   | { kind: 'contact' }
-  | { kind: 'project'; id: string };
+  | { kind: 'project'; id: string }
+  | { kind: 'folder'; id: 'uxui' | 'otros' };
 
 export type Open = (t: Target) => void;
 
-export const targetKey = (t: Target) => (t.kind === 'project' ? `p-${t.id}` : t.kind);
+export const targetKey = (t: Target) => (t.kind === 'project' ? `p-${t.id}` : t.kind === 'folder' ? `f-${t.id}` : t.kind);
 
 /** #/basehub · #/sobre-mi · #/contacto */
 export function targetToHash(t: Target) {

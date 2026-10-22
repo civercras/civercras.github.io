@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { byId, projects } from '../data/projects';
+import { byId } from '../data/projects';
 import { contact } from '../data/about';
 import { ui, useLang } from '../i18n';
 import { hashToTarget, targetKey, targetToHash, type Open, type Target } from '../nav';
 import { AboutView, ContactView } from './AboutView';
 import { Gadgets } from './Gadgets';
+import { MoreCard } from './Cards';
 import { ProjectView } from './ProjectView';
 import { Showcase } from './Showcase';
 import { Taskbar } from './Taskbar';
@@ -25,8 +26,30 @@ const starIcon = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http
 const mailIcon = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8ff9c"/><stop offset=".55" stop-color="#46c93a"/><stop offset="1" stop-color="#16802a"/></linearGradient></defs><rect width="64" height="64" fill="url(#a)"/><rect x="12" y="19" width="40" height="27" rx="4" fill="#fff"/><path d="M13 21l19 14 19-14" fill="none" stroke="#2fa33a" stroke-width="3" stroke-linejoin="round"/></svg>`)}`;
 const cvIcon = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd0c0"/><stop offset=".55" stop-color="#f0603c"/><stop offset="1" stop-color="#b8300f"/></linearGradient></defs><rect width="64" height="64" fill="url(#a)"/><path d="M20 10h17l9 9v35H20z" fill="#fff"/><path d="M37 10v9h9" fill="#ffd9cc"/><text x="33" y="44" text-anchor="middle" font-family="Arial" font-weight="900" font-size="12" fill="#d43a1a">CV</text></svg>`)}`;
 
+const folderSvg = (a: string, b: string, c: string, glyph: string) => `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset=".55" stop-color="${b}"/><stop offset="1" stop-color="${c}"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" fill="#eaf6ff"/><path d="M8 16h18l5 5h25v31H8z" fill="${c}"/><path d="M8 24h48v28H8z" fill="url(#f)"/><path d="M8 24h48v12H8z" fill="url(#g)"/>${glyph}</svg>`)}`;
+const uxIcon = folderSvg('#9fe6ff', '#1ea3ef', '#0a5fc0', '<rect x="22" y="30" width="20" height="15" rx="2" fill="#fff"/><rect x="25" y="33" width="14" height="2.5" rx="1" fill="#1ea3ef"/><rect x="25" y="38" width="9" height="2.5" rx="1" fill="#9fd8f5"/>');
+const otherIcon = folderSvg('#d8ff9c', '#46c93a', '#16802a', '<circle cx="27" cy="38" r="5" fill="#fff"/><rect x="34" y="33" width="9" height="10" rx="1.5" fill="#fff"/>');
+
+export const folders = {
+  uxui: { title: { es: 'Diseño UX/UI', en: 'UX/UI design' }, icon: uxIcon, ids: ['basehub', 'cocoon', 'riftos', 'mandopc', 'bookreader', 'instalaza'] },
+  otros: { title: { es: 'Otros proyectos', en: 'Other projects' }, icon: otherIcon, ids: ['rumex', 'carteles', 'fotografia', 'tfg'] },
+} as const;
+
 export const iconFor = (t: Target) =>
-  t.kind === 'project' ? byId(t.id)!.icon : t.kind === 'about' ? 'img/avatar.webp' : t.kind === 'contact' ? mailIcon : starIcon;
+  t.kind === 'project' ? byId(t.id)!.icon : t.kind === 'folder' ? folders[t.id].icon : t.kind === 'about' ? 'img/avatar.webp' : t.kind === 'contact' ? mailIcon : starIcon;
+
+function FolderView({ id, open }: { id: 'uxui' | 'otros'; open: Open }) {
+  const { tx } = useLang();
+  const f = folders[id];
+  return (
+    <div className="folder">
+      <div className="folder__path">{tx(f.title)} · {f.ids.length} {tx(ui.works)}</div>
+      <div className="mgrid">
+        {f.ids.map((pid) => { const p = byId(pid)!; return <MoreCard key={pid} p={p} onOpen={() => open({ kind: 'project', id: pid })} />; })}
+      </div>
+    </div>
+  );
+}
 
 export function Desktop() {
   const { tx } = useLang();
@@ -37,7 +60,7 @@ export function Desktop() {
   const winsRef = useRef(wins);
   winsRef.current = wins;
 
-  const iconCols = Math.max(1, Math.ceil(16 / Math.max(1, Math.floor((area.h - 28) / 116))));
+  const iconCols = Math.max(1, Math.ceil(6 / Math.max(1, Math.floor((area.h - 28) / 116))));
   const leftEdge = 14 + iconCols * 102 + 8;
   const gadgetsW = area.w >= 1180 ? (area.w <= 1280 ? 260 : 290) + 32 : 0;
 
@@ -45,6 +68,7 @@ export function Desktop() {
     if (t.kind === 'project') { const p = byId(t.id)!; return `${tx(p.title)} — ${tx(p.category)}`; }
     if (t.kind === 'about') return `${tx(ui.about)} — Pablo Grasa`;
     if (t.kind === 'contact') return tx(ui.contact);
+    if (t.kind === 'folder') return tx(folders[t.id].title);
     return `${tx(ui.featured)} — Pablo Grasa`;
   }, [tx]);
 
@@ -53,6 +77,10 @@ export function Desktop() {
     if (t.kind === 'showcase') {
       const w = Math.max(560, a.w - leftEdge - gadgetsW - 8);
       return { x: leftEdge, y: 14, w: Math.min(w, 1400), h: a.h - 28 };
+    }
+    if (t.kind === 'folder') {
+      const w = Math.min(820, a.w - leftEdge - 40), h = Math.min(t.id === 'uxui' ? 640 : 420, a.h - 60);
+      return { x: leftEdge + 30, y: 40, w, h };
     }
     if (t.kind === 'contact') {
       const w = Math.min(520, a.w - 40), h = Math.min(560, a.h - 40);
@@ -142,7 +170,8 @@ export function Desktop() {
 
   const icons: { label: string; icon: string; target?: Target; href?: string; contain?: boolean }[] = [
     { label: tx(ui.featured), icon: starIcon, target: { kind: 'showcase' } },
-    ...projects.map((p) => ({ label: tx(p.title), icon: p.icon, target: { kind: 'project', id: p.id } as Target, contain: p.id === 'instalaza' || p.id === 'basehub' || p.id === 'mandopc' })),
+    { label: tx(folders.uxui.title), icon: uxIcon, target: { kind: 'folder', id: 'uxui' } },
+    { label: tx(folders.otros.title), icon: otherIcon, target: { kind: 'folder', id: 'otros' } },
     { label: tx(ui.about), icon: 'img/avatar.webp', target: { kind: 'about' } },
     { label: tx(ui.contact), icon: mailIcon, target: { kind: 'contact' } },
     { label: 'CV.pdf', icon: cvIcon, href: contact.cv },
@@ -152,6 +181,7 @@ export function Desktop() {
     if (t.kind === 'showcase') return <Showcase open={open} />;
     if (t.kind === 'about') return <AboutView open={open} />;
     if (t.kind === 'contact') return <ContactView />;
+    if (t.kind === 'folder') return <FolderView id={t.id} open={open} />;
     return <ProjectView id={t.id} open={open} />;
   };
 

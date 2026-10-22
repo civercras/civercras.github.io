@@ -14,7 +14,6 @@ function WallpaperBase() {
   return (
     <div className="wall" aria-hidden="true">
       <div className="wall__sky" />
-      <div className="wall__rays" />
       <div className="wall__flare" />
 
       {/* Cintas de luz tipo aurora */}
