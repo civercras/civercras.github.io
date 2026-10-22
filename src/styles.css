@@ -691,3 +691,21 @@ a.ct__row:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -14px rgb
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .bubble, .spark { display: none; }
 }
+
+/* aviso de pantalla completa */
+.fshint {
+  position: fixed; left: 50%; bottom: calc(var(--bar-h) + 16px); transform: translateX(-50%); z-index: 9400;
+  display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; border-radius: 999px; overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(220,240,255,.7));
+  backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow-card), inset 0 1px 0 #fff;
+  font-size: .88rem; font-weight: 600; color: var(--ink-2); white-space: nowrap;
+  animation: toast .45s var(--spring); transition: opacity .45s, transform .45s var(--ease);
+}
+.fshint--out { opacity: 0; transform: translate(-50%, 14px); }
+.fshint__ic { width: 18px; height: 18px; color: var(--aqua-deep); }
+.fshint__x { width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 50%; background: none; color: var(--ink-3); }
+.fshint__x:hover { background: rgba(0,60,140,.08); color: var(--ink); }
+.fshint__x svg { width: 14px; height: 14px; }
+.fshint__bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: linear-gradient(90deg, #7fe2ff, #46c93a); transform-origin: left; animation: fsbar 9s linear forwards; }
+@keyframes fsbar { from { transform: scaleX(1); } to { transform: scaleX(0); } }

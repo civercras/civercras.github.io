@@ -5,6 +5,7 @@ import { ui, useLang } from '../i18n';
 import { hashToTarget, targetKey, targetToHash, type Open, type Target } from '../nav';
 import { AboutView, ContactView } from './AboutView';
 import { Gadgets } from './Gadgets';
+import { FsHint } from './FsHint';
 import { MoreCard } from './Cards';
 import { ProjectView } from './ProjectView';
 import { Showcase } from './Showcase';
@@ -224,6 +225,7 @@ export function Desktop() {
         </Window>
       ))}
 
+      <FsHint />
       <Taskbar
         tasks={wins.map((w) => ({ key: w.key, title: w.target.kind === 'project' ? tx(byId(w.target.id)!.title) : titleFor(w.target).split(' — ')[0], icon: iconFor(w.target), min: w.min, focused: focus === w.key }))}
         onTask={onTask}
