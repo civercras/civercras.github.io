@@ -78,6 +78,6 @@ export const ui = {
   share: b('Copiar enlace', 'Copy link'),
   linkCopied: b('Enlace copiado', 'Link copied'),
   next: b('Siguiente proyecto', 'Next project'),
-  location: b('Zaragoza, España', 'Zaragoza, Spain'),
+  location: b('España', 'Spain'),
   now: b('Ahora', 'Now'),
 };
