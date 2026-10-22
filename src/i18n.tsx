@@ -60,7 +60,7 @@ export const ui = {
   year: b('Año', 'Year'),
   type: b('Tipo', 'Type'),
   tools: b('Herramientas', 'Tools'),
-  available: b('Disponible para trabajar en UX/UI', 'Available for UX/UI roles'),
+  available: b('Abierto a nuevos proyectos', 'Open to new projects'),
   hello: b('Hola, soy Pablo', "Hi, I'm Pablo"),
   tagline: b('Diseñador UX/UI e ingeniero de diseño industrial', 'UX/UI designer & industrial design engineer'),
   pitch: b(

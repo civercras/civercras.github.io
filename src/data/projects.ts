@@ -322,7 +322,7 @@ export const projects: Project[] = [
       'Tu móvil como mando a distancia del PC desde el sofá. Diseñada pensando en el pulgar.',
       'Your phone as a couch remote for your PC. Designed around the thumb.'
     ),
-    badge: b('v1.0 publicada', 'v1.0 released'),
+    badge: b('v1.1.1', 'v1.1.1'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App Windows + web móvil', 'Windows app + mobile web'),
@@ -382,6 +382,7 @@ export const projects: Project[] = [
           b('Tarjeta de la app activa con botones inteligentes para navegador, vídeo, música, PowerPoint…', 'Active-app card with smart buttons for browser, video, music, PowerPoint…'),
           b('Vista de pantalla ("modo cine") con clic directo, lupa y zoom.', 'Screen view ("cinema mode") with direct click, magnifier and zoom.'),
           b('Energía segura: apagar con pulsación larga y 10 s para cancelar.', 'Safe power: shut down with a long press and 10 s to cancel.'),
+          b('Interfaz en español e inglés (desde la v1.1), según el idioma del móvil.', 'Spanish and English interface (since v1.1), following the phone’s language.'),
           b('Vibración distinta por acción y respeto a "reducir movimiento".', 'Distinct vibration per action and respect for "reduce motion".'),
         ],
       },

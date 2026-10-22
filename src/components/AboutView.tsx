@@ -111,7 +111,7 @@ export function AboutView({ open }: { open: Open }) {
           <div className="cta">
             <div>
               <h3>{es ? '¿Hablamos?' : 'Shall we talk?'}</h3>
-              <p>{es ? 'Busco mi primer puesto como diseñador UX/UI. Si crees que encajo en tu equipo, escríbeme.' : "I'm looking for my first UX/UI design role. If you think I'd fit your team, drop me a line."}</p>
+              <p>{es ? 'Si te interesa mi trabajo o quieres colaborar en un proyecto, escríbeme.' : "If you like my work or want to collaborate on a project, get in touch."}</p>
             </div>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
               <button className="btn btn--glass" onClick={copy}><ICopy /> {copied ? tx(ui.copied) : tx(ui.copyEmail)}</button>

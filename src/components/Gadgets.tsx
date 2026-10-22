@@ -35,8 +35,8 @@ export function Gadgets({ open }: { open: Open }) {
 
       <div className="gadget gadget--now">
         <h3>{tx(ui.now)}</h3>
-        <div className="now__item"><span>🛠️</span><div>{es ? <>Publicada la <b>v1.0 de Mando PC</b>, mi app de mando a distancia para el PC.</> : <>Shipped <b>Mando PC v1.0</b>, my phone-as-PC-remote app.</>}</div></div>
-        <div className="now__item"><span>🎯</span><div>{es ? <>Buscando mi <b>primer puesto UX/UI</b>.</> : <>Looking for my <b>first UX/UI role</b>.</>}</div></div>
+        <div className="now__item"><span>🛠️</span><div>{es ? <><b>Mando PC</b> ya va por la v1.1.1 y ahora también habla inglés. </> : <><b>Mando PC</b> is now on v1.1.1 and speaks English too. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'mandopc' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
+        <div className="now__item"><span>✨</span><div>{es ? <>Estrenando <b>nuevo look</b> del portfolio. ¿Qué te parece? </> : <>Showing off the portfolio’s <b>new look</b>. What do you think? </>}<button className="now__link" onClick={() => open({ kind: 'contact' })}>{es ? 'Cuéntamelo' : 'Tell me'}</button></div></div>
         <div className="now__item"><span>🖨️</span><div>{es ? <>Diseñando modelos para <b>impresión 3D</b>.</> : <>Designing models for <b>3D printing</b>.</>}</div></div>
       </div>
     </aside>
