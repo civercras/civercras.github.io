@@ -75,7 +75,7 @@ export function AboutView({ open }: { open: Open }) {
           <h3 className="blk__h">{es ? 'Formación' : 'Education'}</h3>
           <div className="edu">
             {education.map((e, i) => (
-              <div key={i}><div><b>{tx(e.degree)}</b><span>{e.school}</span></div><span className="tl__p">{e.period}</span></div>
+              <div key={i}><div><b>{tx(e.degree)}</b><span>{e.school}</span>{'note' in e && e.note && <span style={{ display: 'block', marginTop: 4 }}>{tx(e.note)}</span>}</div><span className="tl__p">{e.period}</span></div>
             ))}
           </div>
         </section>
@@ -141,7 +141,7 @@ export function ContactView() {
       </div>
       <a className="ct__row" href={contact.linkedin} target="_blank" rel="noopener noreferrer">
         <div className="ct__ic" style={grad('#4aa8ff', '#0a59b0')}><ILinkedin /></div>
-        <div><b>LinkedIn</b><span>/in/pablograsa-productsdesign</span></div>
+        <div><b>LinkedIn</b><span>/in/pablo-grasa-mateo</span></div>
       </a>
       <a className="ct__row" href={contact.github} target="_blank" rel="noopener noreferrer">
         <div className="ct__ic" style={grad('#6c7f95', '#1f2c3a')}><IGithub /></div>

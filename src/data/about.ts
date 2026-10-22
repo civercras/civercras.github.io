@@ -2,7 +2,7 @@ import { b } from '../i18n';
 
 export const contact = {
   email: 'pablo.grasa@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/pablograsa-productsdesign/',
+  linkedin: 'https://www.linkedin.com/in/pablo-grasa-mateo/',
   github: 'https://github.com/civercras',
   instagram: 'https://www.instagram.com/pablog_pic/',
   cv: 'docs/CV_PabloGrasa.pdf',
@@ -40,7 +40,7 @@ export const experience = [
     company: 'Vall Estructures',
     period: b('Sep 2024 – abr 2025', 'Sep 2024 – Apr 2025'),
     bullets: [
-      b('Planos de montaje de estructuras de acero para obra', 'Assembly drawings for on-site steel structures'),
+      b('Planos de montaje de estructuras de acero temporales para obra', 'Assembly drawings for temporary on-site steel structures'),
       b('Listados de materiales y pedidos a proveedores', 'Bills of materials and supplier orders'),
       b('Manejo avanzado de AutoCAD', 'Advanced AutoCAD'),
     ],
@@ -51,8 +51,8 @@ export const experience = [
     period: b('Jun 2023 – feb 2024', 'Jun 2023 – Feb 2024'),
     bullets: [
       b('Planos de montaje muy detallados para obra', 'Highly detailed on-site assembly drawings'),
-      b('Plug-in de SolidWorks para auto-modelado de chapa corrugada', 'SolidWorks plug-in for automatic corrugated-sheet modelling'),
-      b('TFG: bancada y utillaje para robot de soldadura', 'Thesis: bench and tooling for a welding robot'),
+      b('Plug-in de SolidWorks con formulario y auto-modelado de chapa corrugada para contenedores', 'SolidWorks plug-in with a form and auto-modelling of corrugated sheet for containers'),
+      b('TFG puesto en práctica en la empresa: bancada y utillaje para robot de soldadura', 'Thesis put into practice at the company: bench and tooling for a welding robot'),
     ],
   },
   {
@@ -67,7 +67,7 @@ export const experience = [
 ];
 
 export const education = [
-  { degree: b('Título en Diseño UX/UI y Diseño Gráfico', 'UX/UI Design & Graphic Design diploma'), school: 'CEI · Centro de Estudios de Innovación', period: '2025' },
+  { degree: b('Máster en Diseño UX/UI y Diseño Gráfico', 'Master’s in UX/UI Design & Graphic Design'), school: 'CEI · Centro de Estudios e Innovación', period: '2025', note: b('Interfaces digitales, arquitectura de la información, prototipado interactivo y pruebas con usuarios.', 'Digital interfaces, information architecture, interactive prototyping and user testing.') },
   { degree: b('Cambridge Advanced C1 · Inglés', 'Cambridge Advanced C1 · English'), school: 'Cambridge Assessment English', period: '2025' },
   { degree: b('Grado en Ingeniería de Diseño Industrial y Desarrollo de Producto', 'BEng Industrial Design Engineering & Product Development'), school: 'Universidad de Zaragoza', period: '2019 – 2024' },
 ];
@@ -76,10 +76,12 @@ export const skills = [
   { group: b('UX/UI y diseño gráfico', 'UX/UI & graphic design'), items: ['Figma', 'FigJam', 'Maze', 'Adobe Illustrator', 'Photoshop', 'InDesign', 'Canva'] },
   { group: b('Métodos', 'Methods'), items: ['User research', 'Card sorting', 'Wireframing', 'Prototyping', 'Usability testing', 'Design systems', 'WCAG'] },
   { group: b('CAD y 3D', 'CAD & 3D'), items: ['SolidWorks', 'SolidEdge', 'Inventor', 'AutoCAD', 'Siemens NX', 'Catia V5', 'Fusion 360', 'KeyShot'] },
-  { group: b('Web', 'Web'), items: ['HTML5', 'CSS3', b('Desarrollo asistido por IA', 'AI-assisted development')] },
+  { group: b('3D, animación y vídeo', '3D, animation & video'), items: ['Cinema 4D', 'Unity', 'DaVinci Resolve', b('Impresión 3D (STL/3MF)', '3D printing (STL/3MF)')] },
+  { group: b('Código', 'Code'), items: ['HTML5', 'CSS3', 'Java', b('Desarrollo asistido por IA', 'AI-assisted development')] },
 ];
 
 export const languages = [
   { name: b('Español', 'Spanish'), level: b('Nativo', 'Native') },
   { name: b('Inglés', 'English'), level: b('C1 · Cambridge Advanced', 'C1 · Cambridge Advanced') },
+  { name: b('Catalán', 'Catalan'), level: b('Comprensión lectora · oral básico', 'Reading · basic speaking') },
 ];
