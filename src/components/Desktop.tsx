@@ -61,7 +61,7 @@ export function Desktop() {
   const winsRef = useRef(wins);
   winsRef.current = wins;
 
-  const iconCols = Math.max(1, Math.ceil(6 / Math.max(1, Math.floor((area.h - 28) / 116))));
+  const iconCols = Math.max(1, Math.ceil(6 / Math.max(1, Math.floor((area.h - 28) / 112))));
   const leftEdge = 14 + iconCols * 102 + 8;
   const gadgetsW = area.w >= 1180 ? (area.w <= 1280 ? 260 : 290) + 32 : 0;
 
