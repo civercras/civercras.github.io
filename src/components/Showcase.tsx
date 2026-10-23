@@ -1,5 +1,5 @@
 import { featured, others } from '../data/projects';
-import { contact } from '../data/about';
+import { contact, cvUrl } from '../data/about';
 import { ui, useLang } from '../i18n';
 import type { Open } from '../nav';
 import { FeaturedCard, MoreCard } from './Cards';
@@ -17,7 +17,7 @@ export function Showcase({ open }: { open: Open }) {
         </div>
         <div className="show__actions">
           <button className="btn btn--sm btn--green" onClick={() => open({ kind: 'about' })}><IUser /> {tx(ui.about)}</button>
-          <a className="btn btn--sm btn--glass" href={contact.cv} download><IDownload /> {tx(ui.downloadCv)}</a>
+          <a className="btn btn--sm btn--glass" href={cvUrl(lang)} download><IDownload /> {tx(ui.downloadCv)}</a>
         </div>
       </div>
 

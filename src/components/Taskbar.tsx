@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { featured, others } from '../data/projects';
-import { contact } from '../data/about';
+import { contact, cvUrl } from '../data/about';
 import { ui, useLang } from '../i18n';
 import type { Open } from '../nav';
 import { IDownload, IGithub, IGrid, ILinkedin, IMail, IUser } from './Icons';
@@ -61,7 +61,7 @@ function StartMenu({ open, onClose }: { open: Open; onClose: () => void }) {
           <button className="start__link" onClick={() => go({ kind: 'showcase' })}><IGrid /> {tx(ui.allProjects)}</button>
           <button className="start__link" onClick={() => go({ kind: 'about' })}><IUser /> {tx(ui.about)}</button>
           <button className="start__link" onClick={() => go({ kind: 'contact' })}><IMail /> {tx(ui.contact)}</button>
-          <a className="start__link" href={contact.cv} download><IDownload /> {tx(ui.downloadCv)}</a>
+          <a className="start__link" href={cvUrl(lang)} download><IDownload /> {tx(ui.downloadCv)}</a>
           <a className="start__link" href={contact.linkedin} target="_blank" rel="noopener noreferrer"><ILinkedin /> LinkedIn</a>
           <a className="start__link" href={contact.github} target="_blank" rel="noopener noreferrer"><IGithub /> GitHub</a>
           <div style={{ flex: 1 }} />

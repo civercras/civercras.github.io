@@ -6,7 +6,11 @@ export const contact = {
   github: 'https://github.com/civercras',
   instagram: 'https://www.instagram.com/pablog_pic/',
   cv: 'docs/CV_PabloGrasa.pdf',
+  cvEn: 'docs/CV_PabloGrasa_EN.pdf',
 };
+
+/** CV en el idioma activo de la web */
+export const cvUrl = (lang: string) => (lang === 'en' ? contact.cvEn : contact.cv);
 
 export const strengths = [
   { icon: '🧭', title: b('Diseño centrado en el usuario', 'User-centred design'), text: b('Entrevistas, encuestas, card sorting y testing con usuarios reales. Decido con datos, no con intuiciones.', 'Interviews, surveys, card sorting and testing with real users. I decide with data, not hunches.') },

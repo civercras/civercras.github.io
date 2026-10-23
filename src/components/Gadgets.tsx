@@ -1,4 +1,4 @@
-import { contact } from '../data/about';
+import { contact, cvUrl } from '../data/about';
 import { ui, useLang } from '../i18n';
 import type { Open } from '../nav';
 import { IDownload, IGithub, ILinkedin, IMail, IUser } from './Icons';
@@ -24,7 +24,7 @@ export function Gadgets({ open }: { open: Open }) {
         <p className="prof__pitch">{tx(ui.pitch)}</p>
         <div className="prof__actions">
           <button className="btn btn--sm btn--green" onClick={() => open({ kind: 'about' })}><IUser /> {tx(ui.about)}</button>
-          <a className="btn btn--sm btn--glass" href={contact.cv} download><IDownload /> CV</a>
+          <a className="btn btn--sm btn--glass" href={cvUrl(lang)} download><IDownload /> CV</a>
         </div>
         <div className="prof__links">
           <a className="iconbtn" href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><ILinkedin /></a>

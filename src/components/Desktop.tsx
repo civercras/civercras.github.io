@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { byId } from '../data/projects';
-import { contact } from '../data/about';
+import { contact, cvUrl } from '../data/about';
 import { ui, useLang } from '../i18n';
 import { hashToTarget, targetKey, targetToHash, type Open, type Target } from '../nav';
 import { AboutView, ContactView } from './AboutView';
@@ -53,7 +53,7 @@ function FolderView({ id, open }: { id: 'uxui' | 'otros'; open: Open }) {
 }
 
 export function Desktop() {
-  const { tx } = useLang();
+  const { tx, lang } = useLang();
   const area = useArea();
   const [wins, setWins] = useState<Win[]>([]);
   const [focus, setFocus] = useState<string | null>(null);
@@ -175,7 +175,7 @@ export function Desktop() {
     { label: tx(folders.otros.title), icon: otherIcon, target: { kind: 'folder', id: 'otros' } },
     { label: tx(ui.about), icon: 'img/avatar.webp', target: { kind: 'about' } },
     { label: tx(ui.contact), icon: mailIcon, target: { kind: 'contact' } },
-    { label: 'CV.pdf', icon: cvIcon, href: contact.cv },
+    { label: 'CV.pdf', icon: cvIcon, href: cvUrl(lang) },
   ];
 
   const renderBody = (t: Target) => {

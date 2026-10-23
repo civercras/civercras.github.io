@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { byId, featured, others } from '../data/projects';
-import { contact } from '../data/about';
+import { contact, cvUrl } from '../data/about';
 import { ui, useLang } from '../i18n';
 import { hashToTarget, targetToHash, type Open, type Target } from '../nav';
 import { AboutView, ContactView } from './AboutView';
@@ -10,7 +10,7 @@ import { ProjectView } from './ProjectView';
 import { LangSwitch } from './Taskbar';
 
 export function Mobile() {
-  const { tx } = useLang();
+  const { tx, lang } = useLang();
   const [sheet, setSheet] = useState<Target | null>(() => hashToTarget(location.hash));
 
   const open: Open = useCallback((t) => {
@@ -56,7 +56,7 @@ export function Mobile() {
             {tx(ui.pitch)}
             <div className="prof__actions">
               <button className="btn btn--sm btn--green" onClick={() => open({ kind: 'about' })}><IUser /> {tx(ui.about)}</button>
-              <a className="btn btn--sm btn--glass" href={contact.cv} download><IDownload /> CV</a>
+              <a className="btn btn--sm btn--glass" href={cvUrl(lang)} download><IDownload /> CV</a>
             </div>
           </div>
         </header>

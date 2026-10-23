@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { contact, education, experience, languages, skills, strengths } from '../data/about';
+import { contact, cvUrl, education, experience, languages, skills, strengths } from '../data/about';
 import { ui, useLang } from '../i18n';
 import type { Open } from '../nav';
 import { ICopy, IDownload, IGithub, ILinkedin, IMail } from './Icons';
@@ -39,7 +39,7 @@ export function AboutView({ open }: { open: Open }) {
               : 'Industrial design engineer specialised in UX/UI. I combine the technical thinking of product engineering with the user-centred view of interface design: high-fidelity prototyping, user research and component systems in Figma.'}
           </p>
           <div className="ab__btns">
-            <a className="btn btn--green" href={contact.cv} download><IDownload /> {tx(ui.downloadCv)}</a>
+            <a className="btn btn--green" href={cvUrl(lang)} download><IDownload /> {tx(ui.downloadCv)}</a>
             <a className="btn btn--glass" href={contact.linkedin} target="_blank" rel="noopener noreferrer"><ILinkedin /> LinkedIn</a>
             <button className="btn btn--glass" onClick={copy}>{copied ? '✓ ' + tx(ui.copied) : <><IMail /> {contact.email}</>}</button>
           </div>
@@ -98,9 +98,13 @@ export function AboutView({ open }: { open: Open }) {
 
         <section className="blk">
           <h3 className="blk__h">{tx(ui.cv)}</h3>
+          <p className="txt" style={{ marginBottom: 12 }}>
+            {es ? 'Disponible en ' : 'Available in '}
+            <a href={contact.cv} download>{es ? 'español' : 'Spanish'}</a>{es ? ' e ' : ' and '}<a href={contact.cvEn} download>{es ? 'inglés' : 'English'}</a>.
+          </p>
           <div className="cvpages">
-            {['img/cv-1.webp', 'img/cv-2.webp'].map((src, i) => (
-              <a key={src} className="gitem" href={contact.cv} target="_blank" rel="noopener noreferrer" aria-label={`${tx(ui.viewCv)} ${i + 1}`}>
+            {(lang === 'en' ? ['img/cv-1-en.webp', 'img/cv-2-en.webp'] : ['img/cv-1.webp', 'img/cv-2.webp']).map((src, i) => (
+              <a key={src} className="gitem" href={cvUrl(lang)} target="_blank" rel="noopener noreferrer" aria-label={`${tx(ui.viewCv)} ${i + 1}`}>
                 <img src={src} alt={`CV ${i + 1}/2`} loading="lazy" />
               </a>
             ))}
@@ -147,9 +151,9 @@ export function ContactView() {
         <div className="ct__ic" style={grad('#6c7f95', '#1f2c3a')}><IGithub /></div>
         <div><b>GitHub</b><span>github.com/civercras</span></div>
       </a>
-      <a className="ct__row" href={contact.cv} download>
+      <a className="ct__row" href={cvUrl(lang)} download>
         <div className="ct__ic" style={grad('#b8f56a', '#16902a')}><IDownload /></div>
-        <div><b>{tx(ui.downloadCv)}</b><span>CV_PabloGrasa.pdf</span></div>
+        <div><b>{tx(ui.downloadCv)}</b><span>{lang === 'en' ? 'CV_PabloGrasa_EN.pdf' : 'CV_PabloGrasa.pdf'}</span></div>
       </a>
       <p style={{ fontSize: '.88rem', color: 'var(--ink-3)' }}>📍 {tx(ui.location)}</p>
     </div>
