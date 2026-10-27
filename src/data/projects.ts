@@ -493,6 +493,73 @@ export const projects: Project[] = [
     ],
   },
 
+  /* ───────────────────────── BUBBLEPAD ───────────────────────── */
+  {
+    id: 'bubblepad',
+    title: 'Bubblepad',
+    category: b('App real · Open source', 'Real app · Open source'),
+    short: b(
+      'Soundboard para Windows que mezcla tu micro y tus sonidos en un solo micrófono para Discord y juegos.',
+      'Windows soundboard that mixes your mic and your sounds into a single microphone for Discord and games.'
+    ),
+    badge: b('Acceso anticipado', 'Early access'),
+    year: '2026',
+    role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
+    type: b('App de escritorio para Windows', 'Windows desktop app'),
+    tools: ['Python', 'PySide6', 'HTML/CSS/JS', 'GitHub Actions'],
+    tags: [b('Producto real', 'Shipped product'), b('Audio', 'Audio'), b('UI con carácter', 'Characterful UI')],
+    cover: img('bubblepad-day.webp'),
+    icon: img('bubblepad-icon.png'),
+    accent: '#37b54a',
+    links: [
+      { label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/bubblepad', kind: 'github' },
+      { label: b('Descargar para Windows', 'Download for Windows'), href: 'https://github.com/civercras/bubblepad/releases', kind: 'download' },
+    ],
+    blocks: [
+      {
+        t: 'lead',
+        title: b('El problema', 'The problem'),
+        text: b(
+          'Discord y los juegos solo escuchan un micrófono. Para poner sonidos en una llamada necesitas mezclarlos con tu voz, y las soundboards que probé no me dejaban oír los sonidos a mí. Bubblepad se pone en medio: une tu micro real y tus efectos en un micrófono virtual, y a ti te deja oír los sonidos en los cascos sin escuchar tu propia voz.',
+          'Discord and games only listen to one microphone. To play sounds in a call you have to mix them with your voice, and the soundboards I tried didn’t let me hear the sounds myself. Bubblepad sits in the middle: it joins your real mic and your effects into one virtual microphone, and lets you hear the sounds in your headphones without hearing your own voice.'
+        ),
+      },
+      { t: 'image', src: img('bubblepad-day.webp'), alt: b('Bubblepad con el tema de día', 'Bubblepad with the day theme'), fit: 'contain', bg: '#eaf6ff' },
+      {
+        t: 'cards',
+        title: b('Decisiones de diseño', 'Design decisions'),
+        items: [
+          { icon: '📻', title: b('Un HUD con carácter', 'A characterful HUD'), text: b('Inspirado en los reproductores de música antiguos: formas atrevidas, pantalla LCD tipo Casio con medidores en directo y un gran botón de micro.', 'Inspired by old music players: bold shapes, a Casio-style LCD with live meters and a big mic button.') },
+          { icon: '🫧', title: b('Cada sonido es una burbuja', 'Every sound is a bubble'), text: b('Botones grandes y fáciles de acertar en mitad de una partida, con su atajo de teclado visible debajo.', 'Big buttons that are easy to hit mid-game, with their hotkey shown underneath.') },
+          { icon: '🎚️', title: b('Tres volúmenes, no uno', 'Three volumes, not one'), text: b('Tu voz, los sonidos en la llamada y los sonidos para ti se controlan por separado, porque cada uno se oye en un sitio distinto.', 'Your voice, sounds in the call and sounds for you are set separately, because each one is heard somewhere different.') },
+          { icon: '⌨️', title: b('Funciona sin mirarla', 'Works without looking'), text: b('Atajos globales que funcionan con la ventana minimizada o escondida en la bandeja.', 'Global hotkeys that work with the window minimised or hidden in the tray.') },
+        ],
+      },
+      {
+        t: 'gallery',
+        title: b('Más pantallas', 'More screens'),
+        layout: 'grid',
+        items: [
+          { src: img('bubblepad-night.webp'), title: b('Tema de noche con atardecer animado', 'Night theme with an animated sunset') },
+          { src: img('bubblepad-trim.webp'), title: b('Editor de recorte con forma de onda y quitar silencios', 'Trim editor with waveform and silence removal') },
+        ],
+      },
+      {
+        t: 'section',
+        title: b('Funciones', 'Features'),
+        bullets: [
+          b('Mezcla micro y soundboard en un solo micro virtual (VB-CABLE, que la app instala con un clic).', 'Mixes mic and soundboard into one virtual mic (VB-CABLE, installed by the app in one click).'),
+          b('Editor de recorte no destructivo: tus archivos nunca se modifican.', 'Non-destructive trim editor: your files are never modified.'),
+          b('Temas de día y de noche, búsqueda, orden por atajos y ventana redimensionable.', 'Day and night themes, search, sort by hotkey and a resizable window.'),
+          b('Se recupera sola si los cascos se suspenden o se reconectan.', 'Recovers by itself if your headset sleeps or reconnects.'),
+          b('En español e inglés.', 'In Spanish and English.'),
+        ],
+      },
+      { t: 'note', text: b('La programación está asistida por IA. El diseño, la experiencia de usuario y todas las decisiones de producto son mías.', 'The coding was AI-assisted. The design, the user experience and every product decision are mine.') },
+      { t: 'cta', title: b('Pruébala', 'Try it'), text: b('Gratis y de código abierto (MIT). Versión de acceso anticipado para Windows.', 'Free and open source (MIT). Early-access version for Windows.') },
+    ],
+  },
+
   /* ───────────────────────── INSTALAZA ───────────────────────── */
   {
     id: 'instalaza',

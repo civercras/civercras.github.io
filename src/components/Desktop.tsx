@@ -29,17 +29,19 @@ const cvIcon = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http:/
 
 const folderSvg = (a: string, b: string, c: string, glyph: string) => `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset=".55" stop-color="${b}"/><stop offset="1" stop-color="${c}"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" fill="#eaf6ff"/><path d="M8 16h18l5 5h25v31H8z" fill="${c}"/><path d="M8 24h48v28H8z" fill="url(#f)"/><path d="M8 24h48v12H8z" fill="url(#g)"/>${glyph}</svg>`)}`;
 const uxIcon = folderSvg('#9fe6ff', '#1ea3ef', '#0a5fc0', '<rect x="22" y="30" width="20" height="15" rx="2" fill="#fff"/><rect x="25" y="33" width="14" height="2.5" rx="1" fill="#1ea3ef"/><rect x="25" y="38" width="9" height="2.5" rx="1" fill="#9fd8f5"/>');
+const appsIcon = folderSvg('#ffd9a8', '#ff9a2e', '#d4600a', '<rect x="24" y="29" width="16" height="18" rx="3" fill="#fff"/><circle cx="32" cy="43" r="1.6" fill="#ff9a2e"/><rect x="27" y="32" width="10" height="8" rx="1" fill="#ffd9a8"/>');
 const otherIcon = folderSvg('#d8ff9c', '#46c93a', '#16802a', '<circle cx="27" cy="38" r="5" fill="#fff"/><rect x="34" y="33" width="9" height="10" rx="1.5" fill="#fff"/>');
 
 export const folders = {
-  uxui: { title: { es: 'Diseño UX/UI', en: 'UX/UI design' }, icon: uxIcon, ids: ['basehub', 'cocoon', 'riftos', 'couchpad', 'bookreader', 'instalaza'] },
+  uxui: { title: { es: 'Diseño UX/UI', en: 'UX/UI design' }, icon: uxIcon, ids: ['basehub', 'cocoon', 'riftos', 'instalaza'] },
+  apps: { title: { es: 'Apps', en: 'Apps' }, icon: appsIcon, ids: ['couchpad', 'bookreader', 'bubblepad'] },
   otros: { title: { es: 'Otros proyectos', en: 'Other projects' }, icon: otherIcon, ids: ['rumex', 'carteles', 'fotografia', 'tfg'] },
 } as const;
 
 export const iconFor = (t: Target) =>
   t.kind === 'project' ? byId(t.id)!.icon : t.kind === 'folder' ? folders[t.id].icon : t.kind === 'about' ? 'img/avatar.webp' : t.kind === 'contact' ? mailIcon : starIcon;
 
-function FolderView({ id, open }: { id: 'uxui' | 'otros'; open: Open }) {
+function FolderView({ id, open }: { id: 'uxui' | 'apps' | 'otros'; open: Open }) {
   const { tx } = useLang();
   const f = folders[id];
   return (
@@ -61,7 +63,7 @@ export function Desktop() {
   const winsRef = useRef(wins);
   winsRef.current = wins;
 
-  const iconCols = Math.max(1, Math.ceil(6 / Math.max(1, Math.floor((area.h - 28) / 112))));
+  const iconCols = Math.max(1, Math.ceil(7 / Math.max(1, Math.floor((area.h - 28) / 112))));
   const leftEdge = 14 + iconCols * 102 + 8;
   const gadgetsW = area.w >= 1180 ? (area.w <= 1280 ? 260 : 290) + 32 : 0;
 
@@ -80,7 +82,7 @@ export function Desktop() {
       return { x: leftEdge, y: 14, w: Math.min(w, 1400), h: a.h - 28 };
     }
     if (t.kind === 'folder') {
-      const w = Math.min(820, a.w - leftEdge - 40), h = Math.min(t.id === 'uxui' ? 640 : 420, a.h - 60);
+      const w = Math.min(820, a.w - leftEdge - 40), h = Math.min(420, a.h - 60);
       return { x: leftEdge + 30, y: 40, w, h };
     }
     if (t.kind === 'contact') {
@@ -172,6 +174,7 @@ export function Desktop() {
   const icons: { label: string; icon: string; target?: Target; href?: string; contain?: boolean }[] = [
     { label: tx(ui.featured), icon: starIcon, target: { kind: 'showcase' } },
     { label: tx(folders.uxui.title), icon: uxIcon, target: { kind: 'folder', id: 'uxui' } },
+    { label: tx(folders.apps.title), icon: appsIcon, target: { kind: 'folder', id: 'apps' } },
     { label: tx(folders.otros.title), icon: otherIcon, target: { kind: 'folder', id: 'otros' } },
     { label: tx(ui.about), icon: 'img/avatar.webp', target: { kind: 'about' } },
     { label: tx(ui.contact), icon: mailIcon, target: { kind: 'contact' } },

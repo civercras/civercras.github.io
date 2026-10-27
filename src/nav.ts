@@ -5,7 +5,7 @@ export type Target =
   | { kind: 'about' }
   | { kind: 'contact' }
   | { kind: 'project'; id: string }
-  | { kind: 'folder'; id: 'uxui' | 'otros' };
+  | { kind: 'folder'; id: 'uxui' | 'apps' | 'otros' };
 
 export type Open = (t: Target) => void;
 
