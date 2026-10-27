@@ -344,7 +344,7 @@ export const projects: Project[] = [
       'Tu móvil como mando a distancia del PC desde el sofá. Diseñada pensando en el pulgar.',
       'Your phone as a couch remote for your PC. Designed around the thumb.'
     ),
-    badge: b('v1.2', 'v1.2'),
+    badge: b('v1.4', 'v1.4'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App Windows + web móvil', 'Windows app + mobile web'),
@@ -405,6 +405,8 @@ export const projects: Project[] = [
           b('Vista de pantalla ("modo cine") con clic directo, lupa y zoom.', 'Screen view ("cinema mode") with direct click, magnifier and zoom.'),
           b('Energía segura: apagar con pulsación larga y 10 s para cancelar.', 'Safe power: shut down with a long press and 10 s to cancel.'),
           b('Interfaz en español e inglés (desde la v1.1), según el idioma del móvil.', 'Spanish and English interface (since v1.1), following the phone’s language.'),
+          b('Doble toque y arrastrar como en el touchpad de un portátil, también en la vista de pantalla (v1.4).', 'Double tap and drag like a laptop touchpad, in screen view too (v1.4).'),
+          b('Nombre de red fijo en casa: el acceso directo del móvil ya no se rompe si cambia la IP del PC (v1.3).', 'Fixed network name at home: the phone shortcut no longer breaks when the PC’s IP changes (v1.3).'),
           b('Vibración distinta por acción y respeto a "reducir movimiento".', 'Distinct vibration per action and respect for "reduce motion".'),
         ],
       },
@@ -502,7 +504,7 @@ export const projects: Project[] = [
       'Soundboard para Windows que mezcla tu micro y tus sonidos en un solo micrófono para Discord y juegos.',
       'Windows soundboard that mixes your mic and your sounds into a single microphone for Discord and games.'
     ),
-    badge: b('Acceso anticipado', 'Early access'),
+    badge: b('v0.2 · con instalador', 'v0.2 · with installer'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App de escritorio para Windows', 'Windows desktop app'),
@@ -513,7 +515,7 @@ export const projects: Project[] = [
     accent: '#37b54a',
     links: [
       { label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/bubblepad', kind: 'github' },
-      { label: b('Descargar para Windows', 'Download for Windows'), href: 'https://github.com/civercras/bubblepad/releases', kind: 'download' },
+      { label: b('Descargar v0.2 (instalador o portable)', 'Download v0.2 (installer or portable)'), href: 'https://github.com/civercras/bubblepad/releases/tag/v0.2.0', kind: 'download' },
     ],
     blocks: [
       {
@@ -525,6 +527,23 @@ export const projects: Project[] = [
         ),
       },
       { t: 'image', src: img('bubblepad-day.webp'), alt: b('Bubblepad con el tema de día', 'Bubblepad with the day theme'), fit: 'contain', bg: '#eaf6ff' },
+      {
+        t: 'section',
+        title: b('Novedades de la v0.2', 'What’s new in v0.2'),
+        bullets: [
+          b('Panel de conexiones visual: micrófono, pad, llamada y cascos unidos por cables que se iluminan con la señal. Pulsas cualquier aparato para elegir su dispositivo.', 'Visual connections panel: microphone, pad, call and headphones joined by cables that light up with the signal. Click any device to choose it.'),
+          b('Reducción de ruido integrada (RNNoise) solo para tu voz, antes de mezclarla con los sonidos.', 'Built-in noise reduction (RNNoise) for your voice only, before it’s mixed with the sounds.'),
+          b('Instalador para Windows además de la versión portable.', 'A Windows installer as well as the portable version.'),
+        ],
+      },
+      { t: 'image', src: img('bubblepad-connections-day.webp'), alt: b('Panel de conexiones de Bubblepad', 'Bubblepad connections panel'), caption: b('Panel de conexiones: cada aparato se enchufa al pad con su cable', 'Connections panel: each device plugs into the pad with its own cable'), fit: 'contain', bg: '#eaf6ff' },
+      {
+        t: 'note',
+        text: b(
+          'Recomendable quitar la supresión de ruido en la llamada (Discord, Teams o el juego): confunde tus sonidos con ruido de fondo y los apaga. No pierdes calidad de voz, porque Bubblepad trae su propia reducción de ruido, que limpia tu micro antes de mezclarlo con los sonidos.',
+          'It’s best to turn off noise suppression in the call (Discord, Teams or the game): it mistakes your sounds for background noise and mutes them. Your voice doesn’t suffer, because Bubblepad has its own noise reduction that cleans your mic before mixing it with the sounds.'
+        ),
+      },
       {
         t: 'cards',
         title: b('Decisiones de diseño', 'Design decisions'),
@@ -542,6 +561,7 @@ export const projects: Project[] = [
         items: [
           { src: img('bubblepad-night.webp'), title: b('Tema de noche con atardecer animado', 'Night theme with an animated sunset') },
           { src: img('bubblepad-trim.webp'), title: b('Editor de recorte con forma de onda y quitar silencios', 'Trim editor with waveform and silence removal') },
+          { src: img('bubblepad-connections-night.webp'), title: b('Panel de conexiones con el tema de noche', 'Connections panel, night theme') },
         ],
       },
       {
@@ -556,7 +576,16 @@ export const projects: Project[] = [
         ],
       },
       { t: 'note', text: b('La programación está asistida por IA. El diseño, la experiencia de usuario y todas las decisiones de producto son mías.', 'The coding was AI-assisted. The design, the user experience and every product decision are mine.') },
-      { t: 'cta', title: b('Pruébala', 'Try it'), text: b('Gratis y de código abierto (MIT). Versión de acceso anticipado para Windows.', 'Free and open source (MIT). Early-access version for Windows.') },
+      {
+        t: 'section',
+        title: b('Dos formas de instalarla', 'Two ways to install it'),
+        bullets: [
+          b('Instalador (recomendado): Bubblepad-Setup.exe. Se instala para tu usuario, sin permisos de administrador, con acceso directo y desinstalador.', 'Installer (recommended): Bubblepad-Setup.exe. Installs for your user, no admin rights needed, with a shortcut and an uninstaller.'),
+          b('Portable: Bubblepad-windows.zip. Lo descomprimes donde quieras y abres Bubblepad.exe; no instala nada.', 'Portable: Bubblepad-windows.zip. Unzip it anywhere and run Bubblepad.exe; nothing gets installed.'),
+          b('Al no estar firmada todavía, Windows o el navegador pueden avisar: «Conservar» y después «Más información → Ejecutar de todas formas».', 'As it isn’t code-signed yet, Windows or your browser may warn you: “Keep”, then “More info → Run anyway”.'),
+        ],
+      },
+      { t: 'cta', title: b('Pruébala', 'Try it'), text: b('Gratis y de código abierto (MIT). Versión de acceso anticipado para Windows, con instalador o portable.', 'Free and open source (MIT). Early-access version for Windows, as an installer or portable.') },
     ],
   },
 
