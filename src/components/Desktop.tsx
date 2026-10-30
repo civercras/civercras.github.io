@@ -11,6 +11,7 @@ import { ProjectView } from './ProjectView';
 import { Showcase } from './Showcase';
 import { Taskbar } from './Taskbar';
 import { Window, type WinState } from './Window';
+import { sfx } from '../sound';
 
 const BAR = 54;
 type Win = WinState & { target: Target };
@@ -106,12 +107,14 @@ export function Desktop() {
     setFocus(key);
     const w = winsRef.current.find((x) => x.key === key);
     if (w) setHash(w.target);
+    if (w?.min) sfx.open();
   }, []);
 
   const open: Open = useCallback((t) => {
     const key = targetKey(t);
     const exists = winsRef.current.find((w) => w.key === key);
     if (exists) { focusWin(key); return; }
+    sfx.open();
     z.current += 1;
     const g = geomFor(t, winsRef.current.filter((w) => w.target.kind !== 'showcase').length);
     setWins((ws) => [...ws, { key, target: t, ...g, z: z.current, min: false, max: false }]);
@@ -120,6 +123,7 @@ export function Desktop() {
   }, [focusWin, geomFor]);
 
   const close = (key: string) => {
+    sfx.close();
     setWins((ws) => {
       const rest = ws.filter((w) => w.key !== key);
       const top = rest.filter((w) => !w.min).sort((a, b) => b.z - a.z)[0];
@@ -129,6 +133,7 @@ export function Desktop() {
     });
   };
   const minimize = (key: string) => {
+    sfx.min();
     setWins((ws) => {
       const next = ws.map((w) => (w.key === key ? { ...w, min: true } : w));
       const top = next.filter((w) => !w.min).sort((a, b) => b.z - a.z)[0];

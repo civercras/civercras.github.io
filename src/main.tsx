@@ -7,6 +7,9 @@ import { Wallpaper } from './components/Wallpaper';
 import { Boot } from './components/Boot';
 import { Desktop } from './components/Desktop';
 import { Mobile } from './components/Mobile';
+import { wireClicks } from './sound';
+
+wireClicks();
 
 const MQ = '(max-width: 820px), (max-height: 520px)';
 

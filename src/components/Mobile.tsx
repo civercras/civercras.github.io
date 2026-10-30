@@ -7,7 +7,8 @@ import { AboutView, ContactView } from './AboutView';
 import { FeaturedCard, MoreCard } from './Cards';
 import { IBack, IDownload, IGrid, IMail, IUser } from './Icons';
 import { ProjectView } from './ProjectView';
-import { LangSwitch } from './Taskbar';
+import { LangSwitch, SoundToggle } from './Taskbar';
+import { sfx } from '../sound';
 
 export function Mobile() {
   const { tx, lang } = useLang();
@@ -16,6 +17,7 @@ export function Mobile() {
   const open: Open = useCallback((t) => {
     if (t.kind === 'showcase') { setSheet(null); history.replaceState(null, '', location.pathname + location.search); return; }
     setSheet(t);
+    sfx.open();
     if (history.state?.pg) history.replaceState({ pg: 1 }, '', targetToHash(t));
     else history.pushState({ pg: 1 }, '', targetToHash(t));
   }, []);
@@ -33,6 +35,7 @@ export function Mobile() {
   }, [sheet]);
 
   const closeSheet = () => {
+    sfx.close();
     if (history.state?.pg) { history.back(); return; }
     setSheet(null);
     history.replaceState(null, '', location.pathname + location.search);
@@ -80,6 +83,7 @@ export function Mobile() {
         <button onClick={() => { setSheet(null); document.querySelector('.m')?.scrollTo({ top: 0, behavior: 'smooth' }); }}><IGrid />{tx(ui.allProjects).split(' ')[0]}</button>
         <button onClick={() => open({ kind: 'about' })}><IUser />{tx(ui.about)}</button>
         <button onClick={() => open({ kind: 'contact' })}><IMail />{tx(ui.contact)}</button>
+        <SoundToggle />
         <LangSwitch />
       </nav>
 

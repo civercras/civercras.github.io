@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { featured, others } from '../data/projects';
 import { contact, cvUrl } from '../data/about';
 import { ui, useLang } from '../i18n';
+import { setFx, setMusic, useSound } from '../sound';
 import type { Open } from '../nav';
 import { IDownload, IGithub, IGrid, ILinkedin, IMail, IUser } from './Icons';
 
@@ -11,6 +12,35 @@ function useClock() {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => { const t = setInterval(() => setNow(new Date()), 15000); return () => clearInterval(t); }, []);
   return now;
+}
+
+const ISpk = ({ on }: { on: boolean }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor" stroke="none" />
+    {on ? <><path d="M15.5 9a4 4 0 0 1 0 6" /><path d="M18 6.5a7.5 7.5 0 0 1 0 11" /></> : <path d="M16 9.5l5 5M21 9.5l-5 5" />}
+  </svg>
+);
+const INote = ({ on }: { on: boolean }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <path d="M9 17V5.5l10-2V15" /><circle cx="6.5" cy="17" r="2.5" fill="currentColor" stroke="none" /><circle cx="16.5" cy="15" r="2.5" fill="currentColor" stroke="none" />
+    {!on && <path d="M3.5 3.5l17 17" />}
+  </svg>
+);
+
+/** efectos de sonido y hilo musical */
+export function SoundToggle() {
+  const { lang } = useLang();
+  const st = useSound();
+  const fx = (st & 1) === 1, mu = (st & 2) === 2;
+  const es = lang === 'es';
+  const lf = fx ? (es ? 'Silenciar efectos' : 'Mute sound effects') : (es ? 'Activar efectos de sonido' : 'Turn sound effects on');
+  const lm = mu ? (es ? 'Parar música' : 'Stop music') : (es ? 'Poner música de fondo' : 'Play background music');
+  return (
+    <div className="snd" role="group" aria-label={es ? 'Sonido' : 'Sound'}>
+      <button aria-pressed={fx} onClick={() => setFx(!fx)} aria-label={lf} title={lf}><ISpk on={fx} /></button>
+      <button aria-pressed={mu} className={mu ? 'snd--play' : ''} onClick={() => setMusic(!mu)} aria-label={lm} title={lm}><INote on={mu} /></button>
+    </div>
+  );
 }
 
 export function LangSwitch() {
@@ -91,6 +121,7 @@ export function Taskbar({ tasks, onTask, open }: { tasks: TaskItem[]; onTask: (k
           ))}
         </div>
         <div className="tray">
+          <SoundToggle />
           <LangSwitch />
           <div className="tray__clock">
             {now.toLocaleTimeString(loc, { hour: '2-digit', minute: '2-digit' })}
