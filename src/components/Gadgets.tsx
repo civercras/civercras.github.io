@@ -35,7 +35,7 @@ export function Gadgets({ open }: { open: Open }) {
 
       <div className="gadget gadget--now">
         <h3>{tx(ui.now)}</h3>
-        <div className="now__item"><span>🫧</span><div>{es ? <><b>Bubblepad v0.2</b>: panel de conexiones, reducción de ruido e instalador. </> : <><b>Bubblepad v0.2</b>: connections panel, noise reduction and an installer. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'bubblepad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
+        <div className="now__item"><span>🫧</span><div>{es ? <><b>Bubblepad v0.4</b>: páginas de sonidos y nuevo aspecto cromado de reproductor de los 2000. </> : <><b>Bubblepad v0.4</b>: sound pages and a new chrome, 2000s media-player look. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'bubblepad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
         <div className="now__item"><span>🛠️</span><div>{es ? <><b>Couchpad v1.4</b>: doble toque y arrastrar, como un touchpad. </> : <><b>Couchpad v1.4</b>: double tap and drag, like a touchpad. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'couchpad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
         <div className="now__item"><span>✨</span><div>{es ? <>Estrenando <b>nuevo look</b> del portfolio. ¿Qué te parece? </> : <>Showing off the portfolio’s <b>new look</b>. What do you think? </>}<button className="now__link" onClick={() => open({ kind: 'contact' })}>{es ? 'Cuéntamelo' : 'Tell me'}</button></div></div>
         <div className="now__item"><span>🖨️</span><div>{es ? <>Diseñando modelos para <b>impresión 3D</b>.</> : <>Designing models for <b>3D printing</b>.</>}</div></div>

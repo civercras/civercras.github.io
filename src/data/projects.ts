@@ -504,18 +504,18 @@ export const projects: Project[] = [
       'Soundboard para Windows que mezcla tu micro y tus sonidos en un solo micrófono para Discord y juegos.',
       'Windows soundboard that mixes your mic and your sounds into a single microphone for Discord and games.'
     ),
-    badge: b('v0.2 · con instalador', 'v0.2 · with installer'),
+    badge: b('v0.4 · acceso anticipado', 'v0.4 · early access'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App de escritorio para Windows', 'Windows desktop app'),
     tools: ['Python', 'PySide6', 'HTML/CSS/JS', 'GitHub Actions'],
     tags: [b('Producto real', 'Shipped product'), b('Audio', 'Audio'), b('UI con carácter', 'Characterful UI')],
-    cover: img('bubblepad-day.webp'),
+    cover: img('bubblepad-chrome-day.webp'),
     icon: img('bubblepad-icon.png'),
-    accent: '#37b54a',
+    accent: '#2f6fd6',
     links: [
       { label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/bubblepad', kind: 'github' },
-      { label: b('Descargar v0.2 (instalador o portable)', 'Download v0.2 (installer or portable)'), href: 'https://github.com/civercras/bubblepad/releases/tag/v0.2.0', kind: 'download' },
+      { label: b('Descargar v0.4 (instalador o portable)', 'Download v0.4 (installer or portable)'), href: 'https://github.com/civercras/bubblepad/releases/tag/v0.4.0', kind: 'download' },
     ],
     blocks: [
       {
@@ -526,17 +526,36 @@ export const projects: Project[] = [
           'Discord and games only listen to one microphone. To play sounds in a call you have to mix them with your voice, and the soundboards I tried didn’t let me hear the sounds myself. Bubblepad sits in the middle: it joins your real mic and your effects into one virtual microphone, and lets you hear the sounds in your headphones without hearing your own voice.'
         ),
       },
-      { t: 'image', src: img('bubblepad-day.webp'), alt: b('Bubblepad con el tema de día', 'Bubblepad with the day theme'), fit: 'contain', bg: '#eaf6ff' },
+      { t: 'image', src: img('bubblepad-chrome-day.webp'), alt: b('Bubblepad con el aspecto Chrome', 'Bubblepad with the Chrome look'), caption: b('Aspecto Chrome: un reproductor de los 2000 hecho soundboard', 'Chrome look: a 2000s media player turned soundboard'), fit: 'contain', bg: '#dfe9f7' },
       {
         t: 'section',
-        title: b('Novedades de la v0.2', 'What’s new in v0.2'),
+        title: b('Novedades de la v0.4', 'What’s new in v0.4'),
         bullets: [
-          b('Panel de conexiones visual: micrófono, pad, llamada y cascos unidos por cables que se iluminan con la señal. Pulsas cualquier aparato para elegir su dispositivo.', 'Visual connections panel: microphone, pad, call and headphones joined by cables that light up with the signal. Click any device to choose it.'),
-          b('Reducción de ruido integrada (RNNoise) solo para tu voz, antes de mezclarla con los sonidos.', 'Built-in noise reduction (RNNoise) for your voice only, before it’s mixed with the sounds.'),
-          b('Instalador para Windows además de la versión portable.', 'A Windows installer as well as the portable version.'),
+          b('Páginas de sonidos en pestañas (cada una es una subcarpeta). Arrastras un sonido a una pestaña y la pestaña «se lo traga», con un pequeño rebote.', 'Sound pages in tabs (each one is a subfolder). Drag a sound onto a tab and the tab “gulps” it in, with a little spring.'),
+          b('Muchos sonidos con pocas teclas: cada página tiene sus propios atajos. Al cambiar de página con un atajo suena un «plop» de burbuja que solo oyes tú (uno para la página 1, dos para la 2…), así sabes dónde estás sin mirar.', 'Many sounds, few keys: each page has its own hotkeys. When you switch page with a hotkey you hear a bubble “pop” only you can hear (one for page 1, two for page 2…), so you know where you are without looking.'),
+          b('Los atajos funcionan dentro de League of Legends y otros juegos que bloquean los de las apps, sin ser administrador. Y los del teclado numérico, también con Bloq Num apagado.', 'Hotkeys work inside League of Legends and other games that block app shortcuts, without admin rights. Numpad hotkeys work with Num Lock off too.'),
+          b('Puede abrirse al encender el PC, escondida en la bandeja: el micro virtual siempre está listo.', 'It can open when your PC starts, hidden in the tray: the virtual mic is always ready.'),
         ],
       },
-      { t: 'image', src: img('bubblepad-connections-day.webp'), alt: b('Panel de conexiones de Bubblepad', 'Bubblepad connections panel'), caption: b('Panel de conexiones: cada aparato se enchufa al pad con su cable', 'Connections panel: each device plugs into the pad with its own cable'), fit: 'contain', bg: '#eaf6ff' },
+      {
+        t: 'section',
+        title: b('Desde la v0.3: nuevo aspecto Chrome', 'Since v0.3: the new Chrome look'),
+        text: b(
+          'Chasis plateado de reproductor de los 2000 con pantalla LCD de píxeles, lista de sonidos con su forma de onda real (que se va llenando mientras suena), botones segmentados con iconos grabados y LEDs. El stop va anidado en el botón del micro con un LED rojo mientras algo suena. De noche pasa a grafito con pantallas ámbar. El aspecto Aqua de burbujas sigue disponible en Ajustes.',
+          'A silver 2000s media-player chassis with a pixel LCD, a sound list with each sound’s real waveform (it fills up as it plays), segmented buttons with engraved icons and LEDs. Stop is nested into the mic button, with a red LED while anything plays. At night it turns graphite with amber screens. The bubbly Aqua look is still available in Settings.'
+        ),
+      },
+      {
+        t: 'gallery',
+        title: b('Pantallas', 'Screens'),
+        layout: 'grid',
+        items: [
+          { src: img('bubblepad-chrome-night.webp'), title: b('Modo noche: grafito y ámbar', 'Night mode: graphite and amber') },
+          { src: img('bubblepad-chrome-trim.webp'), title: b('Editor de recorte con forma de onda', 'Trim editor with waveform') },
+          { src: img('bubblepad-aqua.webp'), title: b('Aspecto Aqua clásico: cada sonido es una burbuja', 'Classic Aqua look: every sound is a bubble') },
+        ],
+      },
+      { t: 'image', src: img('bubblepad-connections-day.webp'), alt: b('Panel de conexiones de Bubblepad', 'Bubblepad connections panel'), caption: b('Panel de conexiones (v0.2): cada aparato se enchufa al pad con su cable, que se ilumina con la señal', 'Connections panel (v0.2): each device plugs into the pad with a cable that lights up with the signal'), fit: 'contain', bg: '#eaf6ff' },
       {
         t: 'note',
         text: b(
@@ -548,20 +567,10 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('Decisiones de diseño', 'Design decisions'),
         items: [
-          { icon: '📻', title: b('Un HUD con carácter', 'A characterful HUD'), text: b('Inspirado en los reproductores de música antiguos: formas atrevidas, pantalla LCD tipo Casio con medidores en directo y un gran botón de micro.', 'Inspired by old music players: bold shapes, a Casio-style LCD with live meters and a big mic button.') },
-          { icon: '🫧', title: b('Cada sonido es una burbuja', 'Every sound is a bubble'), text: b('Botones grandes y fáciles de acertar en mitad de una partida, con su atajo de teclado visible debajo.', 'Big buttons that are easy to hit mid-game, with their hotkey shown underneath.') },
+          { icon: '📻', title: b('Un objeto, no una ventana', 'An object, not a window'), text: b('Formas atrevidas y materiales físicos (metal, LCD, LEDs) inspirados en los reproductores de música antiguos. Da gusto tocarla y se reconoce de un vistazo.', 'Bold shapes and physical materials (metal, LCD, LEDs) inspired by old music players. It feels nice to use and is recognisable at a glance.') },
+          { icon: '🔊', title: b('Feedback que se oye', 'Feedback you can hear'), text: b('En mitad de una partida no miras la app: el «plop» al cambiar de página te dice dónde estás, y la pantalla LCD muestra en directo tu voz, la llamada y lo que oyes tú.', 'Mid-game you don’t look at the app: the page-switch “pop” tells you where you are, and the LCD shows your voice, the call and what you hear, live.') },
           { icon: '🎚️', title: b('Tres volúmenes, no uno', 'Three volumes, not one'), text: b('Tu voz, los sonidos en la llamada y los sonidos para ti se controlan por separado, porque cada uno se oye en un sitio distinto.', 'Your voice, sounds in the call and sounds for you are set separately, because each one is heard somewhere different.') },
-          { icon: '⌨️', title: b('Funciona sin mirarla', 'Works without looking'), text: b('Atajos globales que funcionan con la ventana minimizada o escondida en la bandeja.', 'Global hotkeys that work with the window minimised or hidden in the tray.') },
-        ],
-      },
-      {
-        t: 'gallery',
-        title: b('Más pantallas', 'More screens'),
-        layout: 'grid',
-        items: [
-          { src: img('bubblepad-night.webp'), title: b('Tema de noche con atardecer animado', 'Night theme with an animated sunset') },
-          { src: img('bubblepad-trim.webp'), title: b('Editor de recorte con forma de onda y quitar silencios', 'Trim editor with waveform and silence removal') },
-          { src: img('bubblepad-connections-night.webp'), title: b('Panel de conexiones con el tema de noche', 'Connections panel, night theme') },
+          { icon: '🗂️', title: b('Crecer sin liarse', 'Grow without clutter'), text: b('Las páginas son simples carpetas: organizas los sonidos desde la app o desde el explorador de Windows, y los atajos y recortes viajan con cada sonido.', 'Pages are plain folders: organise sounds from the app or from Windows Explorer, and hotkeys and trims travel with each sound.') },
         ],
       },
       {
@@ -569,8 +578,10 @@ export const projects: Project[] = [
         title: b('Funciones', 'Features'),
         bullets: [
           b('Mezcla micro y soundboard en un solo micro virtual (VB-CABLE, que la app instala con un clic).', 'Mixes mic and soundboard into one virtual mic (VB-CABLE, installed by the app in one click).'),
+          b('Reducción de ruido integrada (RNNoise) solo para tu voz, y panel de conexiones visual (v0.2).', 'Built-in noise reduction (RNNoise) for your voice only, and a visual connections panel (v0.2).'),
           b('Editor de recorte no destructivo: tus archivos nunca se modifican.', 'Non-destructive trim editor: your files are never modified.'),
-          b('Temas de día y de noche, búsqueda, orden por atajos y ventana redimensionable.', 'Day and night themes, search, sort by hotkey and a resizable window.'),
+          b('Dos aspectos, Chrome y Aqua, cada uno con modo de día y de noche; búsqueda, orden por atajos y ventana redimensionable.', 'Two looks, Chrome and Aqua, each with day and night modes; search, sort by hotkey and a resizable window.'),
+          b('Atajos globales que funcionan con la ventana minimizada o en la bandeja.', 'Global hotkeys that work with the window minimised or in the tray.'),
           b('Se recupera sola si los cascos se suspenden o se reconectan.', 'Recovers by itself if your headset sleeps or reconnects.'),
           b('En español e inglés.', 'In Spanish and English.'),
         ],
