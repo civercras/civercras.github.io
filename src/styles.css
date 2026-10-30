@@ -880,3 +880,35 @@ body { background: #9ed9f7; }
 .m__me h1 { color: #062a44; text-shadow: 0 1px 0 rgba(255,255,255,.6); }
 .m__me p { color: var(--ink-2); text-shadow: none; }
 .m__h { color: #062a44; text-shadow: 0 1px 0 rgba(255,255,255,.6); }
+
+/* ════════════════════════════════════════════════════════════
+   FONDO MARINO · playa vista a ras de agua con cáusticas
+   ════════════════════════════════════════════════════════════ */
+body { background: #3fc6cf; }
+/* respaldo sin WebGL: mismo reparto cielo / agua / arena */
+.wall__sky { background: linear-gradient(180deg, #1350d1 0%, #5aa8f4 19%, #e8fbfb 20.5%, #8ae6e4 23%, #4ccfd3 44%, #6fe0dc 60%, #a9f0e6 100%); }
+.sea { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .8s; }
+.sea.sea--on { opacity: 1; }
+.cp-cloud { background: rgba(255,255,255,.85); filter: blur(10px); }
+.wall__deep { position: absolute; left: 0; right: 0; top: 24%; bottom: 0; overflow: hidden; }
+.wall__deep .bubble { width: auto; }
+.bubble { background: radial-gradient(circle at 32% 28%, #fff 0 9%, rgba(255,255,255,0) 24%),
+  radial-gradient(circle at 50% 50%, rgba(255,255,255,0) 58%, rgba(255,255,255,.55) 80%, rgba(255,255,255,.9) 100%);
+  border: none; box-shadow: none; opacity: .75; }
+.fish { position: absolute; left: 0; display: block; aspect-ratio: 64 / 44;
+  animation: swim var(--t) linear infinite; animation-delay: var(--d); filter: drop-shadow(0 10px 6px rgba(0,70,90,.18)); }
+.fish svg { width: 100%; height: 100%; display: block; animation: bob 3.2s ease-in-out infinite; }
+.fish--r { animation-name: swimR; }
+.fish--r svg { transform: scaleX(-1); animation-name: bobR; }
+@keyframes swim { from { transform: translateX(105vw); } to { transform: translateX(-10vw); } }
+@keyframes swimR { from { transform: translateX(-10vw); } to { transform: translateX(105vw); } }
+@keyframes bob { 0%,100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -6px; rotate: -3deg; } }
+@keyframes bobR { 0%,100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -6px; rotate: 3deg; } }
+@media (prefers-reduced-motion: reduce) { .fish { animation: none; display: none; } }
+
+/* cristal con brillo sobre el agua: algo más transparente para dejar ver el fondo */
+:root { --cp-card: linear-gradient(180deg, rgba(255,255,255,.80) 0%, rgba(255,255,255,.46) 100%); }
+.win, .gadget, .start, .bar { backdrop-filter: blur(14px) saturate(1.5); -webkit-backdrop-filter: blur(14px) saturate(1.5); }
+.win::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22px; pointer-events: none; z-index: 1; border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,0)); }
+@media (orientation: portrait) { .wall__deep { top: 12%; } .cp-cloud { display: none; } }
