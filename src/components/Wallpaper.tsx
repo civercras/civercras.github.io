@@ -5,6 +5,10 @@ const bubbles = Array.from({ length: 16 }, (_, i) => {
   const r = (n: number) => ((Math.sin(i * 12.9898 + n * 78.233) * 43758.5453) % 1 + 1) % 1;
   return { left: r(1) * 100, size: 14 + r(2) * 62, dur: 16 + r(3) * 22, delay: -r(4) * 30 };
 });
+const clouds = [
+  { top: 6, w: 260, t: 140, d: -20 }, { top: 14, w: 180, t: 110, d: -70 }, { top: 24, w: 320, t: 170, d: -120 },
+  { top: 10, w: 220, t: 130, d: -95 }, { top: 32, w: 160, t: 100, d: -40 },
+];
 const sparks = Array.from({ length: 12 }, (_, i) => {
   const r = (n: number) => ((Math.sin(i * 7.13 + n * 3.7) * 9999.1) % 1 + 1) % 1;
   return { left: 8 + r(1) * 84, top: 6 + r(2) * 55, delay: -r(3) * 4, scale: 0.6 + r(4) * 1.1 };
@@ -15,6 +19,9 @@ function WallpaperBase() {
     <div className="wall" aria-hidden="true">
       <div className="wall__sky" />
       <div className="wall__flare" />
+      {clouds.map((c, i) => (
+        <span key={i} className="cp-cloud" style={{ top: `${c.top}%`, ['--w' as string]: `${c.w}px`, ['--t' as string]: `${c.t}s`, ['--d' as string]: `${c.d}s` } as React.CSSProperties} />
+      ))}
 
       {/* Cintas de luz tipo aurora */}
       <svg className="wall__aurora" viewBox="0 0 1440 600" preserveAspectRatio="none">
