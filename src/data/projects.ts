@@ -515,9 +515,8 @@ export const projects: Project[] = [
     icon: img('bubblepad-icon.png'),
     accent: '#2f6fd6',
     links: [
+      { label: b('Visitar la web', 'Visit the website'), href: 'https://civercras.github.io/BubblePad/es/', kind: 'web' },
       { label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/bubblepad', kind: 'github' },
-      { label: b('Descargar v0.5 (instalador o portable)', 'Download v0.5 (installer or portable)'), href: 'https://github.com/civercras/bubblepad/releases/tag/v0.5.0', kind: 'download' },
-      { label: b('Web de la app', 'App website'), href: 'https://civercras.github.io/BubblePad/es/', kind: 'web' },
     ],
     blocks: [
       {
@@ -539,14 +538,6 @@ export const projects: Project[] = [
         ],
       },
       { t: 'image', src: img('bubblepad-connections-chrome.webp'), alt: b('Panel de conexiones de Bubblepad con aspecto Chrome', 'Bubblepad connections panel, Chrome look'), caption: b('Panel de conexiones (v0.5): cada aparato es una placa y se enchufa al pad con su cable', 'Connections panel (v0.5): each device is a plate that plugs into the pad with its own cable'), fit: 'contain', bg: '#dfe9f7' },
-      {
-        t: 'section',
-        title: b('En la v0.4', 'In v0.4'),
-        bullets: [
-          b('Páginas de sonidos en pestañas (cada una es una subcarpeta); arrastras un sonido a una pestaña y esta «se lo traga». Cada página tiene sus atajos, y al cambiar de página con un atajo suena un «plop» que solo oyes tú.', 'Sound pages in tabs (each one is a subfolder); drag a sound onto a tab and it “gulps” it in. Each page has its own hotkeys, and switching page with a hotkey plays a “pop” only you can hear.'),
-          b('Atajos que funcionan dentro de League of Legends sin ser administrador, y arranque con Windows escondida en la bandeja.', 'Hotkeys that work inside League of Legends without admin rights, and start with Windows hidden in the tray.'),
-        ],
-      },
       {
         t: 'section',
         title: b('Desde la v0.3: nuevo aspecto Chrome', 'Since v0.3: the new Chrome look'),
@@ -590,7 +581,8 @@ export const projects: Project[] = [
           b('Reducción de ruido integrada (RNNoise) solo para tu voz, y panel de conexiones visual (v0.2).', 'Built-in noise reduction (RNNoise) for your voice only, and a visual connections panel (v0.2).'),
           b('Editor de recorte no destructivo: tus archivos nunca se modifican.', 'Non-destructive trim editor: your files are never modified.'),
           b('Dos aspectos, Chrome y Aqua, cada uno con modo de día y de noche; búsqueda, orden por atajos y ventana redimensionable.', 'Two looks, Chrome and Aqua, each with day and night modes; search, sort by hotkey and a resizable window.'),
-          b('Atajos globales que funcionan con la ventana minimizada o en la bandeja.', 'Global hotkeys that work with the window minimised or in the tray.'),
+          b('Páginas de sonidos en pestañas, cada una con sus atajos, y un «plop» que solo oyes tú al cambiar de página (v0.4).', 'Sound pages in tabs, each with its own hotkeys, and a “pop” only you hear when switching page (v0.4).'),
+          b('Atajos globales que funcionan con la ventana minimizada, en la bandeja y dentro de juegos como League of Legends.', 'Global hotkeys that work with the window minimised, in the tray and inside games like League of Legends.'),
           b('Se recupera sola si los cascos se suspenden o se reconectan.', 'Recovers by itself if your headset sleeps or reconnects.'),
           b('En español e inglés.', 'In Spanish and English.'),
         ],
@@ -604,16 +596,7 @@ export const projects: Project[] = [
         text: b('Una landing sencilla en español e inglés para que la encuentre quien busca una soundboard para Discord: cómo funciona, funciones, preguntas frecuentes y descarga directa.', 'A simple landing page in English and Spanish so people searching for a Discord soundboard can find it: how it works, features, FAQ and a direct download.'),
       },
       { t: 'note', text: b('La programación está asistida por IA. El diseño, la experiencia de usuario y todas las decisiones de producto son mías.', 'The coding was AI-assisted. The design, the user experience and every product decision are mine.') },
-      {
-        t: 'section',
-        title: b('Dos formas de instalarla', 'Two ways to install it'),
-        bullets: [
-          b('Instalador (recomendado): Bubblepad-Setup.exe. Se instala para tu usuario, sin permisos de administrador, con acceso directo y desinstalador.', 'Installer (recommended): Bubblepad-Setup.exe. Installs for your user, no admin rights needed, with a shortcut and an uninstaller.'),
-          b('Portable: Bubblepad-windows.zip. Lo descomprimes donde quieras y abres Bubblepad.exe; no instala nada.', 'Portable: Bubblepad-windows.zip. Unzip it anywhere and run Bubblepad.exe; nothing gets installed.'),
-          b('Al no estar firmada todavía, Windows o el navegador pueden avisar: «Conservar» y después «Más información → Ejecutar de todas formas».', 'As it isn’t code-signed yet, Windows or your browser may warn you: “Keep”, then “More info → Run anyway”.'),
-        ],
-      },
-      { t: 'cta', title: b('Pruébala', 'Try it'), text: b('Gratis y de código abierto (MIT). Versión de acceso anticipado para Windows, con instalador o portable.', 'Free and open source (MIT). Early-access version for Windows, as an installer or portable.') },
+      { t: 'cta', title: b('Pruébala', 'Try it'), text: b('Gratis y de código abierto (MIT). Se descarga desde su web.', 'Free and open source (MIT). Download it from its website.') },
     ],
   },
 
