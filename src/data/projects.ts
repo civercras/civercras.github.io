@@ -3,13 +3,13 @@ import { b, type T } from '../i18n';
 const img = (n: string) => `img/${n}`;
 const media = (n: string) => `media/${n}`;
 
-export type Link = { label: T; href: string; kind?: 'figma' | 'github' | 'download' | 'web' | 'slides' | 'instagram' };
+export type Link = { label: T; href: string | T; kind?: 'figma' | 'github' | 'download' | 'web' | 'slides' | 'instagram' };
 
 export type Block =
   | { t: 'lead'; title?: T; text: T }
   | { t: 'stats'; title?: T; items: { v: string; l: T }[] }
   | { t: 'section'; title: T; text?: T; bullets?: T[] }
-  | { t: 'cards'; title: T; items: { icon?: string; title: T; text: T }[]; tone?: 'findings' }
+  | { t: 'cards'; title: T; items: { title: T; text: T }[]; tone?: 'findings' }
   | { t: 'steps'; title: T; items: { title: T; text: T; result?: T }[] }
   | { t: 'decisions'; title: T; items: { title: T; why: T; how: T }[] }
   | { t: 'quotes'; title: T; items: { q: T; who: T }[] }
@@ -102,41 +102,10 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('Insights clave', 'Key insights'),
         items: [
-          { icon: '📶', title: b('El WiFi manda', 'WiFi rules'), text: b('El 78% citó la velocidad de conexión como factor nº1, por encima del precio o la estética. Ninguna app la muestra con claridad.', '78% named connection speed as the #1 factor, above price or looks. No app shows it clearly.') },
-          { icon: '😟', title: b('La incertidumbre duele', 'Uncertainty hurts'), text: b('No querían saber que un sitio "estaba bien", sino qué iban a encontrar al llegar.', 'They didn’t want to know a place was "fine" — they wanted to know what they’d find when they got there.') },
-          { icon: '💬', title: b('Las reseñas genéricas no sirven', 'Generic reviews are useless'), text: b('"Buen café, ambiente tranquilo" no ayuda. Necesitan enchufes por mesa, ruido, zona de llamadas y Mbps reales.', '"Nice coffee, quiet vibe" doesn’t help. They need outlets per table, noise, call areas and real Mbps.') },
-          { icon: '🏅', title: b('La gamificación da confianza', 'Gamification builds trust'), text: b('Confiaban más en reseñas de perfiles con historial verificado.', 'They trusted reviews from profiles with a verified history much more.') },
-        ],
-      },
-      {
-        t: 'steps',
-        title: b('Proceso de diseño', 'Design process'),
-        items: [
-          {
-            title: b('Definición y mapa de empatía', 'Definition & empathy map'),
-            text: b('Agrupé los hallazgos en un affinity diagram: fiabilidad, rapidez de decisión, filtros específicos y comunidad. HMW: ¿cómo podríamos ayudar a los nómadas a decidir con confianza en menos de 2 minutos?', 'I clustered findings in an affinity diagram: reliability, decision speed, specific filters and community. HMW: how might we help nomads choose a space confidently in under 2 minutes?'),
-            result: b('HMW validado por 3 usuarios · 12 citas reales en el mapa de empatía', 'HMW validated by 3 users · 12 real quotes in the empathy map'),
-          },
-          {
-            title: b('Arquitectura de información', 'Information architecture'),
-            text: b('Card sorting con 8 participantes: organizaban los espacios por "tipo de trabajo" (concentración, reunión, llamada), no por tipo de local. Eso cambió toda la lógica de filtrado.', 'Card sorting with 8 participants: they grouped spaces by "type of work" (focus, meeting, call), not by venue type. That changed the whole filtering logic.'),
-            result: b('El filtro por tipo de trabajo pasó a ser el centro de la búsqueda', 'Filtering by type of work became the core of search'),
-          },
-          {
-            title: b('Wireframes lo-fi y mid-fi', 'Lo-fi & mid-fi wireframes'),
-            text: b('Bocetos en papel y wireframes en grises. El primer test (4 usuarios) mostró que filtrar costaba 5 toques y que el CTA principal no se veía.', 'Paper sketches and greyscale wireframes. The first test (4 users) showed filtering took 5 taps and the main CTA was hard to see.'),
-            result: b('De 5 a 2 toques · éxito en tarea del 58% al 83%', 'From 5 to 2 taps · task success from 58% to 83%'),
-          },
-          {
-            title: b('Diseño visual y componentes', 'Visual design & components'),
-            text: b('Paleta de tierras y ocres, estética cartoon retro con mascota propia y sistema de componentes con variantes y Auto Layout.', 'Earthy ochre palette, retro cartoon look with its own mascot and a component system with variants and Auto Layout.'),
-            result: b('34 componentes reutilizables con variantes', '34 reusable components with variants'),
-          },
-          {
-            title: b('Prototipo hi-fi y testing final', 'Hi-fi prototype & final testing'),
-            text: b('Dos rondas más de testing: reubiqué "Escribir reseña" (invisible para el 75%), añadí confirmación al guardar favoritos y reduje el onboarding de 5 a 3 pantallas.', 'Two more testing rounds: moved "Write review" (invisible to 75%), added feedback when saving favourites and cut onboarding from 5 to 3 screens.'),
-            result: b('92% completa el flujo sin ayuda · SUS 81/100', '92% complete the flow unaided · SUS 81/100'),
-          },
+          { title: b('El WiFi manda', 'WiFi rules'), text: b('El 78% citó la velocidad de conexión como factor nº1, por encima del precio o la estética. Ninguna app la muestra con claridad.', '78% named connection speed as the #1 factor, above price or looks. No app shows it clearly.') },
+          { title: b('La incertidumbre duele', 'Uncertainty hurts'), text: b('No querían saber que un sitio "estaba bien", sino qué iban a encontrar al llegar.', 'They didn’t want to know a place was "fine" — they wanted to know what they’d find when they got there.') },
+          { title: b('Las reseñas genéricas no sirven', 'Generic reviews are useless'), text: b('"Buen café, ambiente tranquilo" no ayuda. Necesitan enchufes por mesa, ruido, zona de llamadas y Mbps reales.', '"Nice coffee, quiet vibe" doesn’t help. They need outlets per table, noise, call areas and real Mbps.') },
+          { title: b('La gamificación da confianza', 'Gamification builds trust'), text: b('Confiaban más en reseñas de perfiles con historial verificado.', 'They trusted reviews from profiles with a verified history much more.') },
         ],
       },
       { t: 'image', src: img('basehub-screens.webp'), alt: b('Pantallas de BaseHub', 'BaseHub screens'), fit: 'cover' },
@@ -158,15 +127,6 @@ export const projects: Project[] = [
           { v: '81', l: b('SUS Score (>80 = excelente)', 'SUS score (>80 = excellent)') },
           { v: '−67%', l: b('Pasos para una búsqueda filtrada', 'Steps for a filtered search') },
           { v: '−40%', l: b('Tiempo de decisión (test A/B)', 'Decision time (A/B test)') },
-        ],
-      },
-      {
-        t: 'gallery',
-        title: b('Identidad', 'Identity'),
-        layout: 'grid',
-        items: [
-          { src: img('basehub-mascot.webp'), title: b('Mascota de la app', 'App mascot') },
-          { src: img('poster-basehub.webp'), title: b('Cartel publicitario (Photoshop)', 'Advertising poster (Photoshop)') },
         ],
       },
       {
@@ -226,10 +186,10 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('Qué incluye la auditoría', 'What the audit covers'),
         items: [
-          { icon: '🔎', title: b('Análisis WCAG 2.1', 'WCAG 2.1 analysis'), text: b('Revisión completa frente a los criterios de las pautas WCAG 2.1.', 'Full review against the WCAG 2.1 success criteria.') },
-          { icon: '🚧', title: b('Barreras críticas', 'Critical barriers'), text: b('Identificación de lo que impide acceder a funciones esenciales.', 'Identifying what blocks access to essential features.') },
-          { icon: '📋', title: b('Recomendaciones priorizadas', 'Prioritised recommendations'), text: b('Cada problema con su solución, ordenado por impacto.', 'Every issue paired with a fix, ordered by impact.') },
-          { icon: '🪜', title: b('Plan paso a paso', 'Step-by-step plan'), text: b('Un plan de implementación claro para el equipo.', 'A clear implementation plan for the team.') },
+          { title: b('Análisis WCAG 2.1', 'WCAG 2.1 analysis'), text: b('Revisión completa frente a los criterios de las pautas WCAG 2.1.', 'Full review against the WCAG 2.1 success criteria.') },
+          { title: b('Barreras críticas', 'Critical barriers'), text: b('Identificación de lo que impide acceder a funciones esenciales.', 'Identifying what blocks access to essential features.') },
+          { title: b('Recomendaciones priorizadas', 'Prioritised recommendations'), text: b('Cada problema con su solución, ordenado por impacto.', 'Every issue paired with a fix, ordered by impact.') },
+          { title: b('Plan paso a paso', 'Step-by-step plan'), text: b('Un plan de implementación claro para el equipo.', 'A clear implementation plan for the team.') },
         ],
       },
       {
@@ -237,10 +197,10 @@ export const projects: Project[] = [
         title: b('Cómo se clasifican los hallazgos', 'How findings are classified'),
         tone: 'findings',
         items: [
-          { icon: '🔴', title: b('Problemas críticos', 'Critical issues'), text: b('Barreras que impiden el acceso a funcionalidades esenciales.', 'Barriers that block access to essential features.') },
-          { icon: '🟠', title: b('Mejoras necesarias', 'Needed improvements'), text: b('Dificultan la experiencia pero no bloquean el acceso.', 'They hurt the experience but don’t block access.') },
-          { icon: '🔵', title: b('Recomendaciones', 'Recommendations'), text: b('Sugerencias para optimizar la accesibilidad general.', 'Suggestions to improve overall accessibility.') },
-          { icon: '🟢', title: b('Buenas prácticas', 'Good practices'), text: b('Lo que ya cumple los estándares y conviene mantener.', 'What already meets the standards and should be kept.') },
+          { title: b('Problemas críticos', 'Critical issues'), text: b('Barreras que impiden el acceso a funcionalidades esenciales.', 'Barriers that block access to essential features.') },
+          { title: b('Mejoras necesarias', 'Needed improvements'), text: b('Dificultan la experiencia pero no bloquean el acceso.', 'They hurt the experience but don’t block access.') },
+          { title: b('Recomendaciones', 'Recommendations'), text: b('Sugerencias para optimizar la accesibilidad general.', 'Suggestions to improve overall accessibility.') },
+          { title: b('Buenas prácticas', 'Good practices'), text: b('Lo que ya cumple los estándares y conviene mantener.', 'What already meets the standards and should be kept.') },
         ],
       },
       { t: 'note', text: b('La accesibilidad no es un extra: una web accesible es mejor para todo el mundo.', 'Accessibility isn’t an extra: an accessible website is better for everyone.') },
@@ -301,12 +261,12 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('Funcionalidades', 'Features'),
         items: [
-          { icon: '🎯', title: b('Selector de campeones', 'Champion select'), text: b('Análisis de matchups en tiempo real y recomendaciones estratégicas.', 'Real-time matchup analysis and strategic recommendations.') },
-          { icon: '⚖️', title: b('Ventajas y desventajas', 'Advantages'), text: b('Cada enfrentamiento explicado según estadísticas y meta actual.', 'Each matchup explained from stats and the current meta.') },
-          { icon: '📈', title: b('Seguimiento de LP', 'LP tracking'), text: b('Lo que LoL no enseña: cuánto ganas o pierdes en cada partida.', 'What LoL doesn’t show: how much you win or lose each game.') },
-          { icon: '⏱️', title: b('Contadores de habilidades', 'Ability timers'), text: b('Cooldowns del rival para optimizar tu juego.', 'Enemy cooldowns to sharpen your play.') },
-          { icon: '📱', title: b('Aceptar partida desde el móvil', 'Accept queue from phone'), text: b('Basado en código abierto ya aprobado por Riot.', 'Built on open-source tech already approved by Riot.') },
-          { icon: '💡', title: b('Consejos personalizados', 'Personal tips'), text: b('Según tu campeón, estilo y situación de partida.', 'Based on your champion, playstyle and game state.') },
+          { title: b('Selector de campeones', 'Champion select'), text: b('Análisis de matchups en tiempo real y recomendaciones estratégicas.', 'Real-time matchup analysis and strategic recommendations.') },
+          { title: b('Ventajas y desventajas', 'Advantages'), text: b('Cada enfrentamiento explicado según estadísticas y meta actual.', 'Each matchup explained from stats and the current meta.') },
+          { title: b('Seguimiento de LP', 'LP tracking'), text: b('Lo que LoL no enseña: cuánto ganas o pierdes en cada partida.', 'What LoL doesn’t show: how much you win or lose each game.') },
+          { title: b('Contadores de habilidades', 'Ability timers'), text: b('Cooldowns del rival para optimizar tu juego.', 'Enemy cooldowns to sharpen your play.') },
+          { title: b('Aceptar partida desde el móvil', 'Accept queue from phone'), text: b('Basado en código abierto ya aprobado por Riot.', 'Built on open-source tech already approved by Riot.') },
+          { title: b('Consejos personalizados', 'Personal tips'), text: b('Según tu campeón, estilo y situación de partida.', 'Based on your champion, playstyle and game state.') },
         ],
       },
       {
@@ -345,7 +305,6 @@ export const projects: Project[] = [
       'Tu móvil como mando a distancia del PC desde el sofá. Diseñada pensando en el pulgar.',
       'Your phone as a couch remote for your PC. Designed around the thumb.'
     ),
-    badge: b('v1.4', 'v1.4'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App Windows + web móvil', 'Windows app + mobile web'),
@@ -373,10 +332,10 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('Leyes de UX aplicadas', 'UX laws applied'),
         items: [
-          { icon: '👍', title: b('Fitts · zona del pulgar', 'Fitts · thumb zone'), text: b('Lo frecuente abajo, bajo el pulgar; lo poco usado arriba. En horizontal, a los lados.', 'Frequent actions at the bottom, under the thumb; rare ones up top. In landscape, on the sides.') },
-          { icon: '🎛️', title: b('Hick · menos opciones', 'Hick · fewer choices'), text: b('Botones inteligentes que cambian según la app activa: solo lo que necesitas en cada momento.', 'Smart buttons that change with the active app: only what you need at each moment.') },
-          { icon: '🧠', title: b('Miller y revelación progresiva', 'Miller & progressive disclosure'), text: b('Menú radial con 5 acciones; lo avanzado aparece al mantener pulsado.', 'Radial menu with 5 actions; advanced options appear on long press.') },
-          { icon: '✨', title: b('Von Restorff y Jakob', 'Von Restorff & Jakob'), text: b('El botón central destaca; los gestos del trackpad son los que ya conoces.', 'The central button stands out; trackpad gestures are the ones you already know.') },
+          { title: b('Fitts · zona del pulgar', 'Fitts · thumb zone'), text: b('Lo frecuente abajo, bajo el pulgar; lo poco usado arriba. En horizontal, a los lados.', 'Frequent actions at the bottom, under the thumb; rare ones up top. In landscape, on the sides.') },
+          { title: b('Hick · menos opciones', 'Hick · fewer choices'), text: b('Botones inteligentes que cambian según la app activa: solo lo que necesitas en cada momento.', 'Smart buttons that change with the active app: only what you need at each moment.') },
+          { title: b('Miller y revelación progresiva', 'Miller & progressive disclosure'), text: b('Menú radial con 5 acciones; lo avanzado aparece al mantener pulsado.', 'Radial menu with 5 actions; advanced options appear on long press.') },
+          { title: b('Von Restorff y Jakob', 'Von Restorff & Jakob'), text: b('El botón central destaca; los gestos del trackpad son los que ya conoces.', 'The central button stands out; trackpad gestures are the ones you already know.') },
         ],
       },
       {
@@ -385,15 +344,10 @@ export const projects: Project[] = [
         layout: 'phones',
         items: [
           { src: img('mandopc-home-aero.webp'), title: b('Tema Frutiger Aero', 'Frutiger Aero theme') },
-          { src: img('mandopc-home-dark.webp'), title: b('Tema oscuro', 'Dark theme') },
           { src: img('mandopc-radial.webp'), title: b('Menú radial', 'Radial menu') },
-          { src: img('mandopc-volume.webp'), title: b('Volumen tipo iOS/Samsung', 'iOS/Samsung-style volume') },
           { src: img('mandopc-screen.webp'), title: b('Modo cine', 'Cinema mode') },
-          { src: img('mandopc-tv.webp'), title: b('Sección TV editable', 'Editable TV section') },
           { src: img('mandopc-dial.webp'), title: b('Dial de ventanas', 'Window dial') },
           { src: img('mandopc-tutorial.webp'), title: b('Tutorial interactivo', 'Interactive tutorial') },
-          { src: img('mandopc-luna.webp'), title: b('Tema secreto "Luna"', 'Secret "Luna" theme') },
-          { src: img('mandopc-settings.webp'), title: b('Ajustes', 'Settings') },
         ],
       },
       {
@@ -404,11 +358,7 @@ export const projects: Project[] = [
           b('Dial de ventanas: toque = Alt+Tab; mantener y deslizar = carrusel con los iconos reales de las apps.', 'Window dial: tap = Alt+Tab; hold and slide = carousel with the apps’ real icons.'),
           b('Tarjeta de la app activa con botones inteligentes para navegador, vídeo, música, PowerPoint…', 'Active-app card with smart buttons for browser, video, music, PowerPoint…'),
           b('Vista de pantalla ("modo cine") con clic directo, lupa y zoom.', 'Screen view ("cinema mode") with direct click, magnifier and zoom.'),
-          b('Energía segura: apagar con pulsación larga y 10 s para cancelar.', 'Safe power: shut down with a long press and 10 s to cancel.'),
-          b('Interfaz en español e inglés (desde la v1.1), según el idioma del móvil.', 'Spanish and English interface (since v1.1), following the phone’s language.'),
           b('Doble toque y arrastrar como en el touchpad de un portátil, también en la vista de pantalla (v1.4).', 'Double tap and drag like a laptop touchpad, in screen view too (v1.4).'),
-          b('Nombre de red fijo en casa: el acceso directo del móvil ya no se rompe si cambia la IP del PC (v1.3).', 'Fixed network name at home: the phone shortcut no longer breaks when the PC’s IP changes (v1.3).'),
-          b('Vibración distinta por acción y respeto a "reducir movimiento".', 'Distinct vibration per action and respect for "reduce motion".'),
         ],
       },
       {
@@ -453,9 +403,9 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('El reto', 'The challenge'),
         items: [
-          { icon: '⏱️', title: b('Leer más rápido en el móvil', 'Read faster on a phone'), text: b('La pantalla pequeña obliga a mover mucho los ojos y a hacer scroll constante, lo que cansa y frena la lectura.', 'A small screen means lots of eye movement and constant scrolling, which is tiring and slows reading down.') },
-          { icon: '🧠', title: b('Sin perder comprensión', 'Without losing comprehension'), text: b('La lectura rápida suele hacer que pierdas el hilo. Había que ofrecer una forma fácil de volver al texto completo.', 'Speed reading often makes you lose the thread. There had to be an easy way back to the full text.') },
-          { icon: '👆', title: b('Control con una mano', 'One-handed control'), text: b('Pausar, retroceder o ajustar la velocidad sin buscar botones pequeños: gestos sobre toda la pantalla.', 'Pause, rewind or change speed without hunting for small buttons: gestures across the whole screen.') },
+          { title: b('Leer más rápido en el móvil', 'Read faster on a phone'), text: b('La pantalla pequeña obliga a mover mucho los ojos y a hacer scroll constante, lo que cansa y frena la lectura.', 'A small screen means lots of eye movement and constant scrolling, which is tiring and slows reading down.') },
+          { title: b('Sin perder comprensión', 'Without losing comprehension'), text: b('La lectura rápida suele hacer que pierdas el hilo. Había que ofrecer una forma fácil de volver al texto completo.', 'Speed reading often makes you lose the thread. There had to be an easy way back to the full text.') },
+          { title: b('Control con una mano', 'One-handed control'), text: b('Pausar, retroceder o ajustar la velocidad sin buscar botones pequeños: gestos sobre toda la pantalla.', 'Pause, rewind or change speed without hunting for small buttons: gestures across the whole screen.') },
         ],
       },
       {
@@ -475,11 +425,11 @@ export const projects: Project[] = [
         t: 'cards',
         title: b('Funcionalidades', 'Features'),
         items: [
-          { icon: '🚀', title: b('Aceleración progresiva', 'Progressive speed-up'), text: b('Curva ease-out que arranca suave y sube hasta tu ritmo objetivo, para no desorientar al empezar.', 'An ease-out curve that starts gently and ramps up to your target pace, so starting isn’t disorienting.') },
-          { icon: '👁️', title: b('Modo contexto', 'Context mode'), text: b('Ve el párrafo en lectura tradicional y toca cualquier palabra para retomar desde ahí.', 'See the paragraph in normal reading and tap any word to resume from there.') },
-          { icon: '👆', title: b('Control por gestos', 'Gesture control'), text: b('Deslizar como un dial, doble toque para saltar ±10 palabras, mantener para pausar y previsualizar.', 'Swipe like a dial, double-tap to jump ±10 words, hold to pause and preview.') },
-          { icon: '📳', title: b('Respuesta háptica', 'Haptic feedback'), text: b('Vibraciones sutiles al cambiar de modo, llegar a límites o pausar.', 'Subtle vibrations when switching modes, hitting limits or pausing.') },
-          { icon: '🔒', title: b('Privacidad total', 'Full privacy'), text: b('100% local: sin servidores, sin cuentas y sin recogida de datos.', '100% local: no servers, no accounts, no data collection.') },
+          { title: b('Aceleración progresiva', 'Progressive speed-up'), text: b('Curva ease-out que arranca suave y sube hasta tu ritmo objetivo, para no desorientar al empezar.', 'An ease-out curve that starts gently and ramps up to your target pace, so starting isn’t disorienting.') },
+          { title: b('Modo contexto', 'Context mode'), text: b('Ve el párrafo en lectura tradicional y toca cualquier palabra para retomar desde ahí.', 'See the paragraph in normal reading and tap any word to resume from there.') },
+          { title: b('Control por gestos', 'Gesture control'), text: b('Deslizar como un dial, doble toque para saltar ±10 palabras, mantener para pausar y previsualizar.', 'Swipe like a dial, double-tap to jump ±10 words, hold to pause and preview.') },
+          { title: b('Respuesta háptica', 'Haptic feedback'), text: b('Vibraciones sutiles al cambiar de modo, llegar a límites o pausar.', 'Subtle vibrations when switching modes, hitting limits or pausing.') },
+          { title: b('Privacidad total', 'Full privacy'), text: b('100% local: sin servidores, sin cuentas y sin recogida de datos.', '100% local: no servers, no accounts, no data collection.') },
         ],
       },
       {
@@ -505,7 +455,6 @@ export const projects: Project[] = [
       'Soundboard para Windows que mezcla tu micro y tus sonidos en un solo micrófono para Discord y juegos.',
       'Windows soundboard that mixes your mic and your sounds into a single microphone for Discord and games.'
     ),
-    badge: b('v0.5 · acceso anticipado', 'v0.5 · early access'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App de escritorio para Windows', 'Windows desktop app'),
@@ -515,7 +464,7 @@ export const projects: Project[] = [
     icon: img('bubblepad-icon.png'),
     accent: '#2f6fd6',
     links: [
-      { label: b('Visitar la web', 'Visit the website'), href: 'https://civercras.github.io/BubblePad/es/', kind: 'web' },
+      { label: b('Visitar la web', 'Visit the website'), href: b('https://civercras.github.io/BubblePad/es/', 'https://civercras.github.io/BubblePad/'), kind: 'web' },
       { label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/bubblepad', kind: 'github' },
     ],
     blocks: [
@@ -539,52 +488,23 @@ export const projects: Project[] = [
       },
       { t: 'image', src: img('bubblepad-connections-chrome.webp'), alt: b('Panel de conexiones de Bubblepad con aspecto Chrome', 'Bubblepad connections panel, Chrome look'), caption: b('Panel de conexiones (v0.5): cada aparato es una placa y se enchufa al pad con su cable', 'Connections panel (v0.5): each device is a plate that plugs into the pad with its own cable'), fit: 'contain', bg: '#dfe9f7' },
       {
-        t: 'section',
-        title: b('Desde la v0.3: nuevo aspecto Chrome', 'Since v0.3: the new Chrome look'),
-        text: b(
-          'Chasis plateado de reproductor de los 2000 con pantalla LCD de píxeles, lista de sonidos con su forma de onda real (que se va llenando mientras suena), botones segmentados con iconos grabados y LEDs. El stop va anidado en el botón del micro con un LED rojo mientras algo suena. De noche pasa a grafito con pantallas ámbar. El aspecto Aqua de burbujas sigue disponible en Ajustes.',
-          'A silver 2000s media-player chassis with a pixel LCD, a sound list with each sound’s real waveform (it fills up as it plays), segmented buttons with engraved icons and LEDs. Stop is nested into the mic button, with a red LED while anything plays. At night it turns graphite with amber screens. The bubbly Aqua look is still available in Settings.'
-        ),
-      },
-      {
         t: 'gallery',
         title: b('Pantallas', 'Screens'),
         layout: 'grid',
         items: [
-          { src: img('bubblepad-chrome-night.webp'), title: b('Modo noche: grafito y ámbar', 'Night mode: graphite and amber') },
+          { src: img('bubblepad-chrome-night.webp'), title: b('Aspecto Chrome de noche: grafito y ámbar', 'Chrome look at night: graphite and amber') },
           { src: img('bubblepad-chrome-trim.webp'), title: b('Editor de recorte con forma de onda', 'Trim editor with waveform') },
           { src: img('bubblepad-aqua.webp'), title: b('Aspecto Aqua clásico: cada sonido es una burbuja', 'Classic Aqua look: every sound is a bubble') },
         ],
       },
       {
-        t: 'note',
-        text: b(
-          'Recomendable quitar la supresión de ruido en la llamada (Discord, Teams o el juego): confunde tus sonidos con ruido de fondo y los apaga. No pierdes calidad de voz, porque Bubblepad trae su propia reducción de ruido, que limpia tu micro antes de mezclarlo con los sonidos.',
-          'It’s best to turn off noise suppression in the call (Discord, Teams or the game): it mistakes your sounds for background noise and mutes them. Your voice doesn’t suffer, because Bubblepad has its own noise reduction that cleans your mic before mixing it with the sounds.'
-        ),
-      },
-      {
         t: 'cards',
         title: b('Decisiones de diseño', 'Design decisions'),
         items: [
-          { icon: '📻', title: b('Un objeto, no una ventana', 'An object, not a window'), text: b('Formas atrevidas y materiales físicos (metal, LCD, LEDs) inspirados en los reproductores de música antiguos. Da gusto tocarla y se reconoce de un vistazo.', 'Bold shapes and physical materials (metal, LCD, LEDs) inspired by old music players. It feels nice to use and is recognisable at a glance.') },
-          { icon: '🔊', title: b('Feedback que se oye', 'Feedback you can hear'), text: b('En mitad de una partida no miras la app: el «plop» al cambiar de página te dice dónde estás, y la pantalla LCD muestra en directo tu voz, la llamada y lo que oyes tú.', 'Mid-game you don’t look at the app: the page-switch “pop” tells you where you are, and the LCD shows your voice, the call and what you hear, live.') },
-          { icon: '🎚️', title: b('Tres volúmenes, no uno', 'Three volumes, not one'), text: b('Tu voz, los sonidos en la llamada y los sonidos para ti se controlan por separado, porque cada uno se oye en un sitio distinto.', 'Your voice, sounds in the call and sounds for you are set separately, because each one is heard somewhere different.') },
-          { icon: '🗂️', title: b('Crecer sin liarse', 'Grow without clutter'), text: b('Las páginas son simples carpetas: organizas los sonidos desde la app o desde el explorador de Windows, y los atajos y recortes viajan con cada sonido.', 'Pages are plain folders: organise sounds from the app or from Windows Explorer, and hotkeys and trims travel with each sound.') },
-        ],
-      },
-      {
-        t: 'section',
-        title: b('Funciones', 'Features'),
-        bullets: [
-          b('Mezcla micro y soundboard en un solo micro virtual (VB-CABLE, que la app instala con un clic).', 'Mixes mic and soundboard into one virtual mic (VB-CABLE, installed by the app in one click).'),
-          b('Reducción de ruido integrada (RNNoise) solo para tu voz, y panel de conexiones visual (v0.2).', 'Built-in noise reduction (RNNoise) for your voice only, and a visual connections panel (v0.2).'),
-          b('Editor de recorte no destructivo: tus archivos nunca se modifican.', 'Non-destructive trim editor: your files are never modified.'),
-          b('Dos aspectos, Chrome y Aqua, cada uno con modo de día y de noche; búsqueda, orden por atajos y ventana redimensionable.', 'Two looks, Chrome and Aqua, each with day and night modes; search, sort by hotkey and a resizable window.'),
-          b('Páginas de sonidos en pestañas, cada una con sus atajos, y un «plop» que solo oyes tú al cambiar de página (v0.4).', 'Sound pages in tabs, each with its own hotkeys, and a “pop” only you hear when switching page (v0.4).'),
-          b('Atajos globales que funcionan con la ventana minimizada, en la bandeja y dentro de juegos como League of Legends.', 'Global hotkeys that work with the window minimised, in the tray and inside games like League of Legends.'),
-          b('Se recupera sola si los cascos se suspenden o se reconectan.', 'Recovers by itself if your headset sleeps or reconnects.'),
-          b('En español e inglés.', 'In Spanish and English.'),
+          { title: b('Un objeto, no una ventana', 'An object, not a window'), text: b('Formas atrevidas y materiales físicos (metal, LCD, LEDs) inspirados en los reproductores de música antiguos. Da gusto tocarla y se reconoce de un vistazo.', 'Bold shapes and physical materials (metal, LCD, LEDs) inspired by old music players. It feels nice to use and is recognisable at a glance.') },
+          { title: b('Feedback que se oye', 'Feedback you can hear'), text: b('En mitad de una partida no miras la app: el «plop» al cambiar de página te dice dónde estás, y la pantalla LCD muestra en directo tu voz, la llamada y lo que oyes tú.', 'Mid-game you don’t look at the app: the page-switch “pop” tells you where you are, and the LCD shows your voice, the call and what you hear, live.') },
+          { title: b('Tres volúmenes, no uno', 'Three volumes, not one'), text: b('Tu voz, los sonidos en la llamada y los sonidos para ti se controlan por separado, porque cada uno se oye en un sitio distinto.', 'Your voice, sounds in the call and sounds for you are set separately, because each one is heard somewhere different.') },
+          { title: b('Crecer sin liarse', 'Grow without clutter'), text: b('Las páginas son simples carpetas: organizas los sonidos desde la app o desde el explorador de Windows, y los atajos y recortes viajan con cada sonido.', 'Pages are plain folders: organise sounds from the app or from Windows Explorer, and hotkeys and trims travel with each sound.') },
         ],
       },
       {

@@ -6,13 +6,19 @@ import { IArrow, LinkIcon } from './Icons';
 
 type LB = { src: string; title?: string } | null;
 
+const NoteIcon = ({ lock }: { lock?: boolean }) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {lock ? <><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></> : <><circle cx="12" cy="12" r="9" /><path d="M12 11v5M12 8h.01" /></>}
+  </svg>
+);
+
 function Links({ p, big }: { p: Project; big?: boolean }) {
   const { tx } = useLang();
   if (!p.links?.length) return null;
   return (
     <>
       {p.links.map((l, i) => (
-        <a key={l.href} className={`btn${i > 0 ? ' btn--glass' : ''}${big ? '' : ''}`} href={l.href} target="_blank" rel="noopener noreferrer">
+        <a key={i} className={`btn${i > 0 ? ' btn--glass' : ''}${big ? '' : ''}`} href={typeof l.href === 'string' ? l.href : tx(l.href)} target="_blank" rel="noopener noreferrer">
           <LinkIcon kind={l.kind} /> {tx(l.label)}
         </a>
       ))}
@@ -50,7 +56,7 @@ function BlockView({ blk, p, onZoom }: { blk: Block; p: Project; onZoom: (lb: LB
           <div className={`cards${blk.tone === 'findings' ? ' cards--findings' : ''}`}>
             {blk.items.map((c, i) => (
               <div className="card" key={i} style={blk.tone === 'findings' ? ({ '--c': findingColors[i % 4] } as React.CSSProperties) : undefined}>
-                {c.icon && <div className="card__icon" aria-hidden="true">{c.icon}</div>}
+                <span className="card__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <h4>{tx(c.title)}</h4>
                 <p>{tx(c.text)}</p>
               </div>
@@ -150,7 +156,7 @@ function BlockView({ blk, p, onZoom }: { blk: Block; p: Project; onZoom: (lb: LB
     case 'note':
       return (
         <section className="blk">
-          <div className="note"><span className="note__i" aria-hidden="true">{blk.tone === 'lock' ? '🔒' : '💡'}</span><div>{tx(blk.text)}</div></div>
+          <div className="note"><span className="note__i"><NoteIcon lock={blk.tone === 'lock'} /></span><div>{tx(blk.text)}</div></div>
         </section>
       );
     case 'site':
@@ -176,8 +182,8 @@ function BlockView({ blk, p, onZoom }: { blk: Block; p: Project; onZoom: (lb: LB
           <div className="cta">
             <div><h3>{tx(blk.title)}</h3>{blk.text && <p>{tx(blk.text)}</p>}</div>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              {p.links?.map((l) => (
-                <a key={l.href} className="btn btn--glass" href={l.href} target="_blank" rel="noopener noreferrer"><LinkIcon kind={l.kind} /> {tx(l.label)}</a>
+              {p.links?.map((l, i) => (
+                <a key={i} className="btn btn--glass" href={typeof l.href === 'string' ? l.href : tx(l.href)} target="_blank" rel="noopener noreferrer"><LinkIcon kind={l.kind} /> {tx(l.label)}</a>
               ))}
             </div>
           </div>

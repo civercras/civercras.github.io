@@ -17,7 +17,7 @@ export function Gadgets({ open }: { open: Open }) {
           <div>
             <h2 className="prof__name">Pablo Grasa</h2>
             <p className="prof__role">{tx(ui.tagline)}</p>
-            <p className="prof__loc">📍 {tx(ui.location)}</p>
+            <p className="prof__loc">{tx(ui.location)}</p>
           </div>
         </div>
         <div className="prof__status"><span className="dot" /> {tx(ui.available)}</div>
@@ -35,10 +35,8 @@ export function Gadgets({ open }: { open: Open }) {
 
       <div className="gadget gadget--now">
         <h3>{tx(ui.now)}</h3>
-        <div className="now__item"><span>🫧</span><div>{es ? <><b>Bubblepad v0.5</b>: panel de conexiones nuevo y su propia web. </> : <><b>Bubblepad v0.5</b>: a new connections panel and its own website. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'bubblepad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
-        <div className="now__item"><span>🛠️</span><div>{es ? <><b>Couchpad v1.4</b>: doble toque y arrastrar, como un touchpad. </> : <><b>Couchpad v1.4</b>: double tap and drag, like a touchpad. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'couchpad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
-        <div className="now__item"><span>✨</span><div>{es ? <>Estrenando <b>nuevo look</b> del portfolio. ¿Qué te parece? </> : <>Showing off the portfolio’s <b>new look</b>. What do you think? </>}<button className="now__link" onClick={() => open({ kind: 'contact' })}>{es ? 'Cuéntamelo' : 'Tell me'}</button></div></div>
-        <div className="now__item"><span>🖨️</span><div>{es ? <>Diseñando modelos para <b>impresión 3D</b>.</> : <>Designing models for <b>3D printing</b>.</>}</div></div>
+        <div className="now__item"><img src="img/bubblepad-icon.png" alt="" /><div>{es ? <><b>Bubblepad v0.5</b>: panel de conexiones nuevo y su propia web. </> : <><b>Bubblepad v0.5</b>: a new connections panel and its own website. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'bubblepad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
+        <div className="now__item"><img src="img/mandopc-icon.png" alt="" /><div>{es ? <><b>Couchpad v1.4</b>: doble toque y arrastrar, como un touchpad. </> : <><b>Couchpad v1.4</b>: double tap and drag, like a touchpad. </>}<button className="now__link" onClick={() => open({ kind: 'project', id: 'couchpad' })}>{es ? 'Ver proyecto' : 'See project'}</button></div></div>
       </div>
     </aside>
   );

@@ -51,7 +51,7 @@ export function AboutView({ open }: { open: Open }) {
           <h3 className="blk__h">{es ? 'Qué aporto' : 'What I bring'}</h3>
           <div className="cards">
             {strengths.map((s, i) => (
-              <div className="card" key={i}><div className="card__icon" aria-hidden="true">{s.icon}</div><h4>{tx(s.title)}</h4><p>{tx(s.text)}</p></div>
+              <div className="card" key={i}><span className="card__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><h4>{tx(s.title)}</h4><p>{tx(s.text)}</p></div>
             ))}
           </div>
         </section>
@@ -155,7 +155,7 @@ export function ContactView() {
         <div className="ct__ic" style={grad('#b8f56a', '#16902a')}><IDownload /></div>
         <div><b>{tx(ui.downloadCv)}</b><span>{lang === 'en' ? 'CV_PabloGrasa_EN.pdf' : 'CV_PabloGrasa.pdf'}</span></div>
       </a>
-      <p style={{ fontSize: '.88rem', color: 'var(--ink-3)' }}>📍 {tx(ui.location)}</p>
+      <p style={{ fontSize: '.88rem', color: 'var(--ink-3)' }}>{tx(ui.location)}</p>
     </div>
   );
 }

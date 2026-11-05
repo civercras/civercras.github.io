@@ -951,3 +951,9 @@ body { background: #3fc6cf; }
 .site__go { margin-top: 4px; font-size: .9rem; font-weight: 700; color: var(--accent-deep); }
 @container (max-width: 560px) { .site { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .site { grid-template-columns: 1fr; } }
+
+/* ── contenido más tranquilo: números en vez de emojis, iconos de línea ── */
+.card__n { display: block; margin-bottom: 8px; font: 700 .78rem/1 ui-monospace, "Cascadia Mono", Consolas, monospace; letter-spacing: .06em; color: var(--accent-deep); }
+.cards--findings .card__n { color: var(--c, var(--accent-deep)); }
+.note__i { display: grid; place-items: center; width: 30px; height: 30px; flex: none; border-radius: 50%; background: rgba(200,150,0,.12); color: #8a6a00; }
+.now__item img { width: 26px; height: 26px; flex: none; border-radius: 7px; object-fit: cover; box-shadow: 0 1px 3px rgba(20,90,140,.25); }
