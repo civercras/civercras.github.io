@@ -933,3 +933,21 @@ body { background: #3fc6cf; }
 .sheet { animation: sheetPop .42s cubic-bezier(.2, 1.2, .35, 1); transform-origin: 50% 70%; }
 @keyframes sheetPop { from { opacity: 0; transform: scale(.82) translateY(30px); } to { opacity: 1; transform: none; } }
 .win.win--min { animation: winOut .25s var(--ease) forwards; }
+
+/* ── bloque «web de la app»: tarjeta compacta con miniatura en marco de navegador ── */
+.site { display: grid; grid-template-columns: minmax(0, 300px) 1fr; gap: 22px; align-items: center; padding: 14px; border-radius: var(--r-lg);
+  background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-card); color: inherit; text-decoration: none; transition: box-shadow .2s, transform .2s; }
+.site:hover { box-shadow: var(--shadow-card), 0 0 0 3px rgba(30,159,222,.18); transform: translateY(-1px); }
+.site__shot { display: block; border-radius: 10px; overflow: hidden; border: 1px solid #c9d6e2; background: #eef2f6; }
+.site__bar { display: flex; align-items: center; gap: 5px; height: 22px; padding: 0 8px; background: linear-gradient(180deg, #fbfdff, #e4ebf2); border-bottom: 1px solid #d3dde6; }
+.site__bar i { width: 7px; height: 7px; border-radius: 50%; background: #c3ced9; }
+.site__bar span { margin-left: 6px; flex: 1; min-width: 0; height: 14px; line-height: 14px; padding: 0 8px; border-radius: 7px; background: #fff;
+  font-size: .62rem; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset 0 0 0 1px #dbe3ea; }
+.site__shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.site__txt { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.site__k { font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.site__txt b { font-size: 1.08rem; }
+.site__txt > span:not(.site__k):not(.site__go) { font-size: .92rem; line-height: 1.5; color: var(--ink-2); }
+.site__go { margin-top: 4px; font-size: .9rem; font-weight: 700; color: var(--accent-deep); }
+@container (max-width: 560px) { .site { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .site { grid-template-columns: 1fr; } }

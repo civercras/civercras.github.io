@@ -153,6 +153,23 @@ function BlockView({ blk, p, onZoom }: { blk: Block; p: Project; onZoom: (lb: LB
           <div className="note"><span className="note__i" aria-hidden="true">{blk.tone === 'lock' ? '🔒' : '💡'}</span><div>{tx(blk.text)}</div></div>
         </section>
       );
+    case 'site':
+      return (
+        <section className="blk">
+          <a className="site" href={tx(blk.href)} target="_blank" rel="noopener noreferrer">
+            <span className="site__shot" aria-hidden="true">
+              <span className="site__bar"><i /><i /><i /><span>{blk.domain}</span></span>
+              <img src={tx(blk.img)} alt="" loading="lazy" />
+            </span>
+            <span className="site__txt">
+              <span className="site__k">{tx({ es: 'Web de la app', en: 'App website' })}</span>
+              <b>{tx(blk.title)}</b>
+              <span>{tx(blk.text)}</span>
+              <span className="site__go">{tx({ es: 'Visitar la web', en: 'Visit the website' })} ↗</span>
+            </span>
+          </a>
+        </section>
+      );
     case 'cta':
       return (
         <section className="blk">

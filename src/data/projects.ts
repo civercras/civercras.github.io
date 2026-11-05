@@ -18,7 +18,8 @@ export type Block =
   | { t: 'video'; src: string; poster?: string; caption?: T; vertical?: boolean }
   | { t: 'embed'; src: string; title: T; ratio?: string; heading?: T; caption?: T }
   | { t: 'note'; text: T; tone?: 'info' | 'lock' }
-  | { t: 'cta'; title: T; text?: T };
+  | { t: 'cta'; title: T; text?: T }
+  | { t: 'site'; href: T; img: T; domain: string; title: T; text: T };
 
 export type Project = {
   id: string;
@@ -504,7 +505,7 @@ export const projects: Project[] = [
       'Soundboard para Windows que mezcla tu micro y tus sonidos en un solo micrófono para Discord y juegos.',
       'Windows soundboard that mixes your mic and your sounds into a single microphone for Discord and games.'
     ),
-    badge: b('v0.4 · acceso anticipado', 'v0.4 · early access'),
+    badge: b('v0.5 · acceso anticipado', 'v0.5 · early access'),
     year: '2026',
     role: b('Diseño UX/UI y producto', 'UX/UI & product design'),
     type: b('App de escritorio para Windows', 'Windows desktop app'),
@@ -515,7 +516,8 @@ export const projects: Project[] = [
     accent: '#2f6fd6',
     links: [
       { label: b('Ver en GitHub', 'View on GitHub'), href: 'https://github.com/civercras/bubblepad', kind: 'github' },
-      { label: b('Descargar v0.4 (instalador o portable)', 'Download v0.4 (installer or portable)'), href: 'https://github.com/civercras/bubblepad/releases/tag/v0.4.0', kind: 'download' },
+      { label: b('Descargar v0.5 (instalador o portable)', 'Download v0.5 (installer or portable)'), href: 'https://github.com/civercras/bubblepad/releases/tag/v0.5.0', kind: 'download' },
+      { label: b('Web de la app', 'App website'), href: 'https://civercras.github.io/BubblePad/es/', kind: 'web' },
     ],
     blocks: [
       {
@@ -529,12 +531,20 @@ export const projects: Project[] = [
       { t: 'image', src: img('bubblepad-chrome-day.webp'), alt: b('Bubblepad con el aspecto Chrome', 'Bubblepad with the Chrome look'), caption: b('Aspecto Chrome: un reproductor de los 2000 hecho soundboard', 'Chrome look: a 2000s media player turned soundboard'), fit: 'contain', bg: '#dfe9f7' },
       {
         t: 'section',
-        title: b('Novedades de la v0.4', 'What’s new in v0.4'),
+        title: b('Novedades de la v0.5', 'What’s new in v0.5'),
         bullets: [
-          b('Páginas de sonidos en pestañas (cada una es una subcarpeta). Arrastras un sonido a una pestaña y la pestaña «se lo traga», con un pequeño rebote.', 'Sound pages in tabs (each one is a subfolder). Drag a sound onto a tab and the tab “gulps” it in, with a little spring.'),
-          b('Muchos sonidos con pocas teclas: cada página tiene sus propios atajos. Al cambiar de página con un atajo suena un «plop» de burbuja que solo oyes tú (uno para la página 1, dos para la 2…), así sabes dónde estás sin mirar.', 'Many sounds, few keys: each page has its own hotkeys. When you switch page with a hotkey you hear a bubble “pop” only you can hear (one for page 1, two for page 2…), so you know where you are without looking.'),
-          b('Los atajos funcionan dentro de League of Legends y otros juegos que bloquean los de las apps, sin ser administrador. Y los del teclado numérico, también con Bloq Num apagado.', 'Hotkeys work inside League of Legends and other games that block app shortcuts, without admin rights. Numpad hotkeys work with Num Lock off too.'),
-          b('Puede abrirse al encender el PC, escondida en la bandeja: el micro virtual siempre está listo.', 'It can open when your PC starts, hidden in the tray: the virtual mic is always ready.'),
+          b('Panel de conexiones nuevo, como hardware de verdad: placas con tornillos, etiquetas de cinta, pantallas LCD para elegir cada aparato, ruedas de volumen y cables de colores que brillan con la señal (rojo tu voz, verde la llamada, amarillo lo que oyes tú).', 'A new connections panel built like real hardware: plates with screws, tape labels, LCDs to pick each device, volume knobs and colour-coded cables that glow with the signal (red your voice, green the call, yellow what you hear).'),
+          b('Voz más limpia: corregido un fallo que podía repetir trocitos de tu voz (sonido robótico o con eco) en algunos micros.', 'Clearer voice: fixed a bug that could repeat tiny bits of your voice (robotic or echoey sound) on some mics.'),
+          b('No se puede abrir dos veces, y el instalador nuevo actualiza encima del anterior sin perder nada.', 'It can’t run twice, and the new installer updates over the old one without losing anything.'),
+        ],
+      },
+      { t: 'image', src: img('bubblepad-connections-chrome.webp'), alt: b('Panel de conexiones de Bubblepad con aspecto Chrome', 'Bubblepad connections panel, Chrome look'), caption: b('Panel de conexiones (v0.5): cada aparato es una placa y se enchufa al pad con su cable', 'Connections panel (v0.5): each device is a plate that plugs into the pad with its own cable'), fit: 'contain', bg: '#dfe9f7' },
+      {
+        t: 'section',
+        title: b('En la v0.4', 'In v0.4'),
+        bullets: [
+          b('Páginas de sonidos en pestañas (cada una es una subcarpeta); arrastras un sonido a una pestaña y esta «se lo traga». Cada página tiene sus atajos, y al cambiar de página con un atajo suena un «plop» que solo oyes tú.', 'Sound pages in tabs (each one is a subfolder); drag a sound onto a tab and it “gulps” it in. Each page has its own hotkeys, and switching page with a hotkey plays a “pop” only you can hear.'),
+          b('Atajos que funcionan dentro de League of Legends sin ser administrador, y arranque con Windows escondida en la bandeja.', 'Hotkeys that work inside League of Legends without admin rights, and start with Windows hidden in the tray.'),
         ],
       },
       {
@@ -555,7 +565,6 @@ export const projects: Project[] = [
           { src: img('bubblepad-aqua.webp'), title: b('Aspecto Aqua clásico: cada sonido es una burbuja', 'Classic Aqua look: every sound is a bubble') },
         ],
       },
-      { t: 'image', src: img('bubblepad-connections-day.webp'), alt: b('Panel de conexiones de Bubblepad', 'Bubblepad connections panel'), caption: b('Panel de conexiones (v0.2): cada aparato se enchufa al pad con su cable, que se ilumina con la señal', 'Connections panel (v0.2): each device plugs into the pad with a cable that lights up with the signal'), fit: 'contain', bg: '#eaf6ff' },
       {
         t: 'note',
         text: b(
@@ -585,6 +594,14 @@ export const projects: Project[] = [
           b('Se recupera sola si los cascos se suspenden o se reconectan.', 'Recovers by itself if your headset sleeps or reconnects.'),
           b('En español e inglés.', 'In Spanish and English.'),
         ],
+      },
+      {
+        t: 'site',
+        href: b('https://civercras.github.io/BubblePad/es/', 'https://civercras.github.io/BubblePad/'),
+        img: b(img('bubblepad-web-es.webp'), img('bubblepad-web-en.webp')),
+        domain: 'civercras.github.io/BubblePad',
+        title: b('Su propia web', 'Its own website'),
+        text: b('Una landing sencilla en español e inglés para que la encuentre quien busca una soundboard para Discord: cómo funciona, funciones, preguntas frecuentes y descarga directa.', 'A simple landing page in English and Spanish so people searching for a Discord soundboard can find it: how it works, features, FAQ and a direct download.'),
       },
       { t: 'note', text: b('La programación está asistida por IA. El diseño, la experiencia de usuario y todas las decisiones de producto son mías.', 'The coding was AI-assisted. The design, the user experience and every product decision are mine.') },
       {
